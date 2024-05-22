@@ -1,5 +1,6 @@
 #include "rpc/service/impl.h"
 #include "gateway/workpool.h"
+#include <spdlog/spdlog.h>
 
 GatewayRpcServiceImpl::GatewayRpcServiceImpl(NetService *net_service)
     : net_service_(net_service)
@@ -27,7 +28,12 @@ void GatewayRpcServiceImpl::Push(GatewayRequest *request, GatewayResponse *respo
     // 把数据发回给客户端，同样使用线程池去异步执行任务
     WorkPool::Get().Push([connid, data, this] () {
         muduo::net::TcpConnectionPtr* conn = net_service_->GetConnById(connid);
-        conn->send(data);
+        if (conn->get()->disconnected()) 
+        {
+            spdlog::warn("gateway/impl.cc:33: The target TcpConnection has disconnected!");
+            return;
+        }
+        conn->get()->send(data);
     });
 
 

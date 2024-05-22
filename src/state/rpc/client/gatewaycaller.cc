@@ -1,5 +1,5 @@
 #include "rpc/client/gatewaycaller.h"
-#include "gatewaycaller.h"
+#include "config/gateway.h"
 
 static WFFacilities::WaitGroup wait_group(1);
 
@@ -12,6 +12,11 @@ GatewayCaller &GatewayCaller::Get()
 {
     static GatewayCaller caller;
     return caller;
+}
+
+GatewayCaller::GatewayCaller()
+    : client_(GatewayConfig::Get().GetIp().c_str(), GatewayConfig::Get().GetPortForRPCService())
+{
 }
 
 void GatewayCaller::DelConn(unsigned long long connid, std::string data)

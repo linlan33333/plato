@@ -1,8 +1,9 @@
 #pragma once
 
-#include "gateway/cmdcontext.h"
+#include "srpc/gateway/cmdcontext.h"
 #include <muduo/net/TcpServer.h>
 #include <muduo/net/EventLoop.h>
+#include <muduo/net/TcpConnection.h>
 #include <map>
 #include <shared_mutex>
 
@@ -10,7 +11,7 @@ class NetService
 {
 public:
     NetService() = default;
-    NetService(muduo::net::EventLoop* loop);
+    NetService(muduo::net::EventLoop* loop, const muduo::net::InetAddress &listenAddr);
 
     /// @brief 当接到state server发来的删除连接del信令时，会执行该业务函数
     /// @param cmd_context 
@@ -33,6 +34,6 @@ private:
 
     muduo::net::EventLoop* loop_;
 
-    std::map<unsigned long long, muduo::net::TcpConnectionPtr*> connid_map_;
+    std::map<unsigned long long, const muduo::net::TcpConnectionPtr*> connid_map_;
     std::shared_mutex connid_map_mtx_;
 };

@@ -14,5 +14,5 @@ std::string StateServerConfig::GetIp()
 
 uint32_t StateServerConfig::GetPort()
 {
-    return Conf::GetConf()["state"]["service_port"].as<std::uint32_t>();
+    return Conf::GetConf()["state"]["server_port"].as<std::uint32_t>();
 }

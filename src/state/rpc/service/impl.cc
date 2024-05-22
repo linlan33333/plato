@@ -17,10 +17,11 @@ void StateServerRpcServiceImpl::SendMsg(StateRequest *request, StateResponse *re
     std::string endpoint = request->endpoint();
     unsigned long long connid = request->connid();
     std::string data = request->data();
+    std::cout << "已收到gateway发来的消息，发送对象：" << endpoint << " 发送消息：" << data << std::endl;
 
     // 这里先测试echo效果，即网关发送给我什么消息，我就回复给网关什么消息
     // 这里应当调用rpc客户端的接口发送回消息，把这个任务扔给线程池异步去做
-    WorkPool::Get().Push(std::bind(&GatewayCaller::Push, GatewayCaller::Get(), connid, data));
+    WorkPool::Get().Push(std::bind(&GatewayCaller::Push, &(GatewayCaller::Get()), connid, data));
 
     // 返回RPC响应，只需设置好值就行，会自动帮我们将response发回去
     response->set_code(0);

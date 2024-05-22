@@ -3,7 +3,8 @@
 
 GatewayConfig &GatewayConfig::Get()
 {
-    static GatewayConfig gateway_config;
+    static GatewayConfig config;
+    return config;
 }
 
 std::string GatewayConfig::GetIp()

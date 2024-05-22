@@ -1,6 +1,5 @@
 #include "rpc/client/statecaller.h"
 #include "config/state.h"
-#include "srpc/state/cmdcontext.pb.h"
 #include <spdlog/spdlog.h>
 
 static WFFacilities::WaitGroup wait_group(1);

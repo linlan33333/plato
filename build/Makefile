@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named IpConfigServer
-
-# Build rule for target.
-IpConfigServer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 IpConfigServer
-.PHONY : IpConfigServer
-
-# fast build rule for target.
-IpConfigServer/fast:
-	$(MAKE) -f src/ipconfig/CMakeFiles/IpConfigServer.dir/build.make src/ipconfig/CMakeFiles/IpConfigServer.dir/build
-.PHONY : IpConfigServer/fast
-
-#=============================================================================
 # Target rules for targets named Gateway
 
 # Build rule for target.
@@ -144,7 +131,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... IpConfigServer"
 	@echo "... Gateway"
 .PHONY : help
 

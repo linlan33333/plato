@@ -17,7 +17,7 @@ public:
     void Push(std::function<void()> func);
 
 private:
-    WorkPool();
+    WorkPool() = default;
 
     WorkPool(const WorkPool& pool) = delete;
     WorkPool& operator= (const WorkPool& pool) = delete;
