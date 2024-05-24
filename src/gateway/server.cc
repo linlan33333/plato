@@ -1,18 +1,12 @@
 #include "gateway/rpc/service/service.h"
 #include "config/gateway.h"
 #include "netservice.h"
-#include "workflow/WFFacilities.h"
 #include <unistd.h>
 #include <thread>
-
-static WFFacilities::WaitGroup wait_group(1);
 
 void SRPCServerStart(GatewayRpcService* rpc_server)
 {
     rpc_server->Start();
-    wait_group.wait();
-	rpc_server->Stop();
-	google::protobuf::ShutdownProtobufLibrary();
 }
 
 int main(int argc, char* argv[])
@@ -63,8 +57,6 @@ int main(int argc, char* argv[])
 
     net_server.Start();
     loop.loop();
-    // 感觉join也没用，服务器停掉一般都是杀进程，子线程全会被终止
-    run_rpc_server.join();
 
     return 0;
 }

@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = /home/zly/okramoon/C++/plato/build
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
-	@echo "Running CMake to regenerate build system..."
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
@@ -69,7 +69,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@echo "No interactive CMake dialog available..."
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
 	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
@@ -123,6 +123,19 @@ Gateway/fast:
 	$(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/build
 .PHONY : Gateway/fast
 
+#=============================================================================
+# Target rules for targets named State
+
+# Build rule for target.
+State: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 State
+.PHONY : State
+
+# fast build rule for target.
+State/fast:
+	$(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/build
+.PHONY : State/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -132,6 +145,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Gateway"
+	@echo "... State"
 .PHONY : help
 
 

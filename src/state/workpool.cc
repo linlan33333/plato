@@ -1,4 +1,10 @@
 #include "state/workpool.h"
+#include "config/state.h"
+
+WorkPool::WorkPool()
+{    
+    pool_ = new ThreadPool(StateServerConfig::Get().GetThreadNumForWorkPool());
+}
 
 WorkPool &WorkPool::Get()
 {
@@ -12,11 +18,6 @@ WorkPool::~WorkPool()
     {
         delete pool_;
     }
-}
-
-void WorkPool::Init(int thread_num)
-{
-    pool_ = new ThreadPool(thread_num);
 }
 
 void WorkPool::Push(std::function<void()> func)

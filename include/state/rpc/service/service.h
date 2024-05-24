@@ -1,7 +1,7 @@
 #pragma once
 
-#include "srpc/state/state.srpc.h"
 #include "state/rpc/service/impl.h"
+#include "grpc/state/state.grpc.pb.h"
 
 class StateRpcService
 {
@@ -11,11 +11,11 @@ public:
     // 启动rpc服务器
     void Start();
 
-    void Stop();
-
 private:
     // srpc服务器对象
-    srpc::SRPCServer server_;
+    grpc::ServerBuilder builder;
 
     StateServerRpcServiceImpl state_server_service_impl_;
+
+    std::unique_ptr<grpc::Server> server_;
 };

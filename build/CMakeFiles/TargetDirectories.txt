@@ -5,3 +5,6 @@
 /home/zly/okramoon/C++/plato/build/src/gateway/CMakeFiles/rebuild_cache.dir
 /home/zly/okramoon/C++/plato/build/src/gateway/CMakeFiles/edit_cache.dir
 /home/zly/okramoon/C++/plato/build/src/gateway/CMakeFiles/Gateway.dir
+/home/zly/okramoon/C++/plato/build/src/state/CMakeFiles/rebuild_cache.dir
+/home/zly/okramoon/C++/plato/build/src/state/CMakeFiles/edit_cache.dir
+/home/zly/okramoon/C++/plato/build/src/state/CMakeFiles/State.dir

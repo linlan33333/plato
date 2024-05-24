@@ -187,35 +187,61 @@ src/gateway/CMakeFiles/Gateway.dir/__/common/config/state.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/config/state.cc.s"
 	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/config/state.cc -o CMakeFiles/Gateway.dir/__/common/config/state.cc.s
 
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o: ../src/common/srpc/gateway/gateway.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o"
-	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/srpc/gateway/gateway.pb.cc
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o: ../src/common/grpc/gateway/gateway.grpc.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.grpc.pb.cc
 
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.i"
-	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/srpc/gateway/gateway.pb.cc > CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.i
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.grpc.pb.cc > CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.i
 
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.s"
-	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/srpc/gateway/gateway.pb.cc -o CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.s
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.grpc.pb.cc -o CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.s
 
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o: ../src/common/srpc/state/state.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o"
-	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/srpc/state/state.pb.cc
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o: ../src/common/grpc/gateway/gateway.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.pb.cc
 
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.i"
-	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/srpc/state/state.pb.cc > CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.i
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.pb.cc > CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.i
 
-src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.s"
-	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/srpc/state/state.pb.cc -o CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.s
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.pb.cc -o CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.s
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o: ../src/common/grpc/state/state.grpc.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/state/state.grpc.pb.cc
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/grpc/state/state.grpc.pb.cc > CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.i
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/grpc/state/state.grpc.pb.cc -o CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.s
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o: ../src/common/grpc/state/state.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/state/state.pb.cc
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/grpc/state/state.pb.cc > CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.i
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/grpc/state/state.pb.cc -o CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.s
 
 src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
 src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o: ../src/common/tcp/read.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o"
 	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o -c /home/zly/okramoon/C++/plato/src/common/tcp/read.cpp
 
 src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.i: cmake_force
@@ -225,6 +251,19 @@ src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.i: cmake_force
 src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.s"
 	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/tcp/read.cpp -o CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.s
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o: src/gateway/CMakeFiles/Gateway.dir/flags.make
+src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o: ../src/common/utils/generateid.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o -c /home/zly/okramoon/C++/plato/src/common/utils/generateid.cc
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/utils/generateid.cc > CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.i
+
+src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/gateway && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/utils/generateid.cc -o CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.s
 
 # Object files for target Gateway
 Gateway_OBJECTS = \
@@ -238,9 +277,12 @@ Gateway_OBJECTS = \
 "CMakeFiles/Gateway.dir/__/common/config/gateway.cc.o" \
 "CMakeFiles/Gateway.dir/__/common/config/ipconfig.cc.o" \
 "CMakeFiles/Gateway.dir/__/common/config/state.cc.o" \
-"CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o" \
-"CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o" \
-"CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o"
+"CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o" \
+"CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o" \
+"CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o" \
+"CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o" \
+"CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o" \
+"CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o"
 
 # External object files for target Gateway
 Gateway_EXTERNAL_OBJECTS =
@@ -255,12 +297,71 @@ Gateway_EXTERNAL_OBJECTS =
 ../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/config/gateway.cc.o
 ../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/config/ipconfig.cc.o
 ../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/config/state.cc.o
-../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o
-../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o
+../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o
+../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o
+../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o
+../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o
 ../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.o
+../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o
 ../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/build.make
+../bin/Gateway: /usr/local/lib/libgrpc++_reflection.a
+../bin/Gateway: /usr/local/lib/libgrpc++.a
+../bin/Gateway: /usr/local/lib/libprotobuf.a
+../bin/Gateway: /usr/local/lib/libgrpc.a
+../bin/Gateway: /usr/local/lib/libz.a
+../bin/Gateway: /usr/local/lib/libcares.a
+../bin/Gateway: /usr/local/lib/libaddress_sorting.a
+../bin/Gateway: /usr/local/lib/libre2.a
+../bin/Gateway: /usr/local/lib/libabsl_raw_hash_set.a
+../bin/Gateway: /usr/local/lib/libabsl_hashtablez_sampler.a
+../bin/Gateway: /usr/local/lib/libabsl_hash.a
+../bin/Gateway: /usr/local/lib/libabsl_city.a
+../bin/Gateway: /usr/local/lib/libabsl_low_level_hash.a
+../bin/Gateway: /usr/local/lib/libabsl_statusor.a
+../bin/Gateway: /usr/local/lib/libabsl_bad_variant_access.a
+../bin/Gateway: /usr/local/lib/libgpr.a
+../bin/Gateway: /usr/local/lib/libupb.a
+../bin/Gateway: /usr/local/lib/libabsl_status.a
+../bin/Gateway: /usr/local/lib/libabsl_random_distributions.a
+../bin/Gateway: /usr/local/lib/libabsl_random_seed_sequences.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_pool_urbg.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_randen.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_randen_hwaes.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_randen_hwaes_impl.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_randen_slow.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_platform.a
+../bin/Gateway: /usr/local/lib/libabsl_random_internal_seed_material.a
+../bin/Gateway: /usr/local/lib/libabsl_random_seed_gen_exception.a
+../bin/Gateway: /usr/local/lib/libabsl_cord.a
+../bin/Gateway: /usr/local/lib/libabsl_bad_optional_access.a
+../bin/Gateway: /usr/local/lib/libabsl_cordz_info.a
+../bin/Gateway: /usr/local/lib/libabsl_cord_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_cordz_functions.a
+../bin/Gateway: /usr/local/lib/libabsl_exponential_biased.a
+../bin/Gateway: /usr/local/lib/libabsl_cordz_handle.a
+../bin/Gateway: /usr/local/lib/libabsl_str_format_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_synchronization.a
+../bin/Gateway: /usr/local/lib/libabsl_stacktrace.a
+../bin/Gateway: /usr/local/lib/libabsl_symbolize.a
+../bin/Gateway: /usr/local/lib/libabsl_debugging_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_demangle_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_graphcycles_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_malloc_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_time.a
+../bin/Gateway: /usr/local/lib/libabsl_strings.a
+../bin/Gateway: /usr/local/lib/libabsl_throw_delegate.a
+../bin/Gateway: /usr/local/lib/libabsl_int128.a
+../bin/Gateway: /usr/local/lib/libabsl_strings_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_base.a
+../bin/Gateway: /usr/local/lib/libabsl_spinlock_wait.a
+../bin/Gateway: /usr/local/lib/libabsl_raw_logging_internal.a
+../bin/Gateway: /usr/local/lib/libabsl_log_severity.a
+../bin/Gateway: /usr/local/lib/libabsl_civil_time.a
+../bin/Gateway: /usr/local/lib/libabsl_time_zone.a
+../bin/Gateway: /usr/local/lib/libssl.a
+../bin/Gateway: /usr/local/lib/libcrypto.a
 ../bin/Gateway: src/gateway/CMakeFiles/Gateway.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ../../../bin/Gateway"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable ../../../bin/Gateway"
 	cd /home/zly/okramoon/C++/plato/build/src/gateway && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Gateway.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

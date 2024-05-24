@@ -1,48 +1,25 @@
 #include "rpc/client/statecaller.h"
 #include "config/state.h"
 #include <spdlog/spdlog.h>
-
-static WFFacilities::WaitGroup wait_group(1);
-
-void sig_handler(int signo)
-{
-	wait_group.done();
-}
+#include <grpcpp/grpcpp.h>
 
 StateCaller::StateCaller()
-    : client_(StateServerConfig::Get().GetIp().c_str(), StateServerConfig::Get().GetPort())
-{    
-}
-
-void StateCaller::cancelconn_done(StateResponse *response, srpc::RPCContext *context)
+    : stub_(State::NewStub(grpc::CreateChannel(StateServerConfig::Get().GetIp() + ":" +
+            std::to_string(StateServerConfig::Get().GetPort()), grpc::InsecureChannelCredentials())))
 {
-    // 这个逻辑暂时还没学，先不管
-    // 是不是去mainLoop中删掉该连接的有关信息？
 
-}
-
-void StateCaller::sendmsg_done(StateResponse *response, srpc::RPCContext *context)
-{
-    std::cout << response->msg() << std::endl;
-}
-
-StateCaller &StateCaller::Get()
-{
-    static StateCaller caller;
-    return caller;
 }
 
 void StateCaller::CancelConn(std::string endpoint, unsigned long long connid, std::string data)
 {
-    StateRequest cancelconn_req;
-    cancelconn_req.set_endpoint(endpoint);
-    cancelconn_req.set_connid(connid);
-    cancelconn_req.set_data(data);
-    
-    client_.CancelConn(&cancelconn_req, std::bind(&StateCaller::cancelconn_done, this, std::placeholders::_1, std::placeholders::_2));
+    // 这个逻辑暂时还没学，先不管
+    // 是不是去mainLoop中删掉该连接的有关信息？
+}
 
-    wait_group.wait();
-	google::protobuf::ShutdownProtobufLibrary();
+StateCaller& StateCaller::Get()
+{
+    static StateCaller caller;
+    return caller;
 }
 
 void StateCaller::SendMsg(std::string endpoint, unsigned long long connid, std::string data)
@@ -52,10 +29,10 @@ void StateCaller::SendMsg(std::string endpoint, unsigned long long connid, std::
     push_req.set_connid(connid);
     push_req.set_data(data);
 
-    std::cout << "已发送消息：" << data << std::endl;
+    grpc::ClientContext context;
+    StateResponse resp;
 
-    client_.SendMsg(&push_req, std::bind(&StateCaller::sendmsg_done, this, std::placeholders::_1, std::placeholders::_2));
-
-    wait_group.wait();
-	google::protobuf::ShutdownProtobufLibrary();
+    stub_->SendMsg(&context, push_req, &resp);
 }
+
+

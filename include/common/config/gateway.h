@@ -20,6 +20,8 @@ public:
 
     uint32_t GetThreadNumForNetServer();
 
+    uint32_t GetThreadNumForWorkPool();
+
 private:
     
     GatewayConfig() = default;

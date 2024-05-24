@@ -10,14 +10,12 @@ public:
     static WorkPool& Get();
     ~WorkPool();
 
-    void Init(int thread_num);
-
     /// @brief 将回调函数传进来，然后交给线程池去执行
     /// @param func
     void Push(std::function<void()> func);
 
 private:
-    WorkPool() = default;
+    WorkPool();
 
     WorkPool(const WorkPool& pool) = delete;
     WorkPool& operator= (const WorkPool& pool) = delete;

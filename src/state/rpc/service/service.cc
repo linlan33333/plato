@@ -3,15 +3,13 @@
 
 StateRpcService::StateRpcService()
 {
-    server_.add_service(&state_server_service_impl_);
+    std::string addr = StateServerConfig::Get().GetIp() + ":" + std::to_string(StateServerConfig::Get().GetPort());
+    builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
+    builder.RegisterService(&state_server_service_impl_);
+    server_ = builder.BuildAndStart();
 }
 
 void StateRpcService::Start()
 {
-    server_.start(StateServerConfig::Get().GetPort());
-}
-
-void StateRpcService::Stop()
-{
-    server_.stop();
+    server_->Wait();
 }

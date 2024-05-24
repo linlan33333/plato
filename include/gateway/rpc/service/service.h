@@ -1,6 +1,5 @@
 #pragma once
 
-#include "srpc/gateway/gateway.srpc.h"
 #include "gateway/netservice.h"
 #include "gateway/rpc/service/impl.h"
 
@@ -12,11 +11,10 @@ public:
     // 启动rpc服务器
     void Start();
 
-    void Stop();
-
 private:
-    // srpc服务器对象
-    srpc::SRPCServer server_;
+    grpc::ServerBuilder builder;
 
     GatewayRpcServiceImpl gateway_service_impl_;
+
+    std::unique_ptr<grpc::Server> server_;
 };

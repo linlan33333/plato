@@ -40,6 +40,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/zly/okramoon/C++/plato/build/src/gateway/cmake_install.cmake")
+  include("/home/zly/okramoon/C++/plato/build/src/state/cmake_install.cmake")
 
 endif()
 

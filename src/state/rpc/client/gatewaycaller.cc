@@ -1,11 +1,12 @@
 #include "rpc/client/gatewaycaller.h"
 #include "config/gateway.h"
+#include <spdlog/spdlog.h>
+#include <grpcpp/grpcpp.h>
 
-static WFFacilities::WaitGroup wait_group(1);
-
-void sig_handler(int signo)
+GatewayCaller::GatewayCaller()
+    : stub_(Gateway::NewStub(grpc::CreateChannel(GatewayConfig::Get().GetIp() + ":" + std::to_string(GatewayConfig::Get().GetPortForRPCService()), grpc::InsecureChannelCredentials())))
 {
-	wait_group.done();
+
 }
 
 GatewayCaller &GatewayCaller::Get()
@@ -14,21 +15,16 @@ GatewayCaller &GatewayCaller::Get()
     return caller;
 }
 
-GatewayCaller::GatewayCaller()
-    : client_(GatewayConfig::Get().GetIp().c_str(), GatewayConfig::Get().GetPortForRPCService())
-{
-}
-
 void GatewayCaller::DelConn(unsigned long long connid, std::string data)
 {
     GatewayRequest delconn_req;
     delconn_req.set_connid(connid);
     delconn_req.set_data(data);
 
-    client_.DelConn(&delconn_req, std::bind(&GatewayCaller::delconn_done, this, std::placeholders::_1, std::placeholders::_2));
+    grpc::ClientContext context;
+    GatewayResponse resp;
 
-    wait_group.wait();
-	google::protobuf::ShutdownProtobufLibrary();
+    stub_->DelConn(&context, delconn_req, &resp);
 }
 
 void GatewayCaller::Push(unsigned long long connid, std::string data)
@@ -37,21 +33,8 @@ void GatewayCaller::Push(unsigned long long connid, std::string data)
     push_req.set_connid(connid);
     push_req.set_data(data);
 
-    std::cout << "state server已回拨消息: " << data << std::endl;
+    grpc::ClientContext context;
+    GatewayResponse resp;
 
-    client_.Push(&push_req, std::bind(&GatewayCaller::push_done, this, std::placeholders::_1, std::placeholders::_2));
-
-    wait_group.wait();
-	google::protobuf::ShutdownProtobufLibrary();
-}
-
-void GatewayCaller::delconn_done(GatewayResponse *response, srpc::RPCContext *context)
-{
-    // 这个逻辑暂时没学，先搁置
-    // 需要去修改本服务器的该用户的状态，再通知业务服务器去下线之类的
-}
-
-void GatewayCaller::push_done(GatewayResponse *response, srpc::RPCContext *context)
-{
-    std::cout << response->msg() << std::endl;
+    stub_->Push(&context, push_req, &resp);
 }

@@ -233,59 +233,113 @@ __/common/config/state.cc.s:
 	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/config/state.cc.s
 .PHONY : __/common/config/state.cc.s
 
-__/common/srpc/gateway/gateway.pb.o: __/common/srpc/gateway/gateway.pb.cc.o
+__/common/grpc/gateway/gateway.grpc.pb.o: __/common/grpc/gateway/gateway.grpc.pb.cc.o
 
-.PHONY : __/common/srpc/gateway/gateway.pb.o
-
-# target to build an object file
-__/common/srpc/gateway/gateway.pb.cc.o:
-	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.o
-.PHONY : __/common/srpc/gateway/gateway.pb.cc.o
-
-__/common/srpc/gateway/gateway.pb.i: __/common/srpc/gateway/gateway.pb.cc.i
-
-.PHONY : __/common/srpc/gateway/gateway.pb.i
-
-# target to preprocess a source file
-__/common/srpc/gateway/gateway.pb.cc.i:
-	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.i
-.PHONY : __/common/srpc/gateway/gateway.pb.cc.i
-
-__/common/srpc/gateway/gateway.pb.s: __/common/srpc/gateway/gateway.pb.cc.s
-
-.PHONY : __/common/srpc/gateway/gateway.pb.s
-
-# target to generate assembly for a file
-__/common/srpc/gateway/gateway.pb.cc.s:
-	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/gateway/gateway.pb.cc.s
-.PHONY : __/common/srpc/gateway/gateway.pb.cc.s
-
-__/common/srpc/state/state.pb.o: __/common/srpc/state/state.pb.cc.o
-
-.PHONY : __/common/srpc/state/state.pb.o
+.PHONY : __/common/grpc/gateway/gateway.grpc.pb.o
 
 # target to build an object file
-__/common/srpc/state/state.pb.cc.o:
-	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.o
-.PHONY : __/common/srpc/state/state.pb.cc.o
+__/common/grpc/gateway/gateway.grpc.pb.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o
+.PHONY : __/common/grpc/gateway/gateway.grpc.pb.cc.o
 
-__/common/srpc/state/state.pb.i: __/common/srpc/state/state.pb.cc.i
+__/common/grpc/gateway/gateway.grpc.pb.i: __/common/grpc/gateway/gateway.grpc.pb.cc.i
 
-.PHONY : __/common/srpc/state/state.pb.i
+.PHONY : __/common/grpc/gateway/gateway.grpc.pb.i
 
 # target to preprocess a source file
-__/common/srpc/state/state.pb.cc.i:
-	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.i
-.PHONY : __/common/srpc/state/state.pb.cc.i
+__/common/grpc/gateway/gateway.grpc.pb.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.i
+.PHONY : __/common/grpc/gateway/gateway.grpc.pb.cc.i
 
-__/common/srpc/state/state.pb.s: __/common/srpc/state/state.pb.cc.s
+__/common/grpc/gateway/gateway.grpc.pb.s: __/common/grpc/gateway/gateway.grpc.pb.cc.s
 
-.PHONY : __/common/srpc/state/state.pb.s
+.PHONY : __/common/grpc/gateway/gateway.grpc.pb.s
 
 # target to generate assembly for a file
-__/common/srpc/state/state.pb.cc.s:
-	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/srpc/state/state.pb.cc.s
-.PHONY : __/common/srpc/state/state.pb.cc.s
+__/common/grpc/gateway/gateway.grpc.pb.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.s
+.PHONY : __/common/grpc/gateway/gateway.grpc.pb.cc.s
+
+__/common/grpc/gateway/gateway.pb.o: __/common/grpc/gateway/gateway.pb.cc.o
+
+.PHONY : __/common/grpc/gateway/gateway.pb.o
+
+# target to build an object file
+__/common/grpc/gateway/gateway.pb.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.o
+.PHONY : __/common/grpc/gateway/gateway.pb.cc.o
+
+__/common/grpc/gateway/gateway.pb.i: __/common/grpc/gateway/gateway.pb.cc.i
+
+.PHONY : __/common/grpc/gateway/gateway.pb.i
+
+# target to preprocess a source file
+__/common/grpc/gateway/gateway.pb.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.i
+.PHONY : __/common/grpc/gateway/gateway.pb.cc.i
+
+__/common/grpc/gateway/gateway.pb.s: __/common/grpc/gateway/gateway.pb.cc.s
+
+.PHONY : __/common/grpc/gateway/gateway.pb.s
+
+# target to generate assembly for a file
+__/common/grpc/gateway/gateway.pb.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/gateway/gateway.pb.cc.s
+.PHONY : __/common/grpc/gateway/gateway.pb.cc.s
+
+__/common/grpc/state/state.grpc.pb.o: __/common/grpc/state/state.grpc.pb.cc.o
+
+.PHONY : __/common/grpc/state/state.grpc.pb.o
+
+# target to build an object file
+__/common/grpc/state/state.grpc.pb.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.o
+.PHONY : __/common/grpc/state/state.grpc.pb.cc.o
+
+__/common/grpc/state/state.grpc.pb.i: __/common/grpc/state/state.grpc.pb.cc.i
+
+.PHONY : __/common/grpc/state/state.grpc.pb.i
+
+# target to preprocess a source file
+__/common/grpc/state/state.grpc.pb.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.i
+.PHONY : __/common/grpc/state/state.grpc.pb.cc.i
+
+__/common/grpc/state/state.grpc.pb.s: __/common/grpc/state/state.grpc.pb.cc.s
+
+.PHONY : __/common/grpc/state/state.grpc.pb.s
+
+# target to generate assembly for a file
+__/common/grpc/state/state.grpc.pb.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.grpc.pb.cc.s
+.PHONY : __/common/grpc/state/state.grpc.pb.cc.s
+
+__/common/grpc/state/state.pb.o: __/common/grpc/state/state.pb.cc.o
+
+.PHONY : __/common/grpc/state/state.pb.o
+
+# target to build an object file
+__/common/grpc/state/state.pb.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.o
+.PHONY : __/common/grpc/state/state.pb.cc.o
+
+__/common/grpc/state/state.pb.i: __/common/grpc/state/state.pb.cc.i
+
+.PHONY : __/common/grpc/state/state.pb.i
+
+# target to preprocess a source file
+__/common/grpc/state/state.pb.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.i
+.PHONY : __/common/grpc/state/state.pb.cc.i
+
+__/common/grpc/state/state.pb.s: __/common/grpc/state/state.pb.cc.s
+
+.PHONY : __/common/grpc/state/state.pb.s
+
+# target to generate assembly for a file
+__/common/grpc/state/state.pb.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/grpc/state/state.pb.cc.s
+.PHONY : __/common/grpc/state/state.pb.cc.s
 
 __/common/tcp/read.o: __/common/tcp/read.cpp.o
 
@@ -313,6 +367,33 @@ __/common/tcp/read.s: __/common/tcp/read.cpp.s
 __/common/tcp/read.cpp.s:
 	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/tcp/read.cpp.s
 .PHONY : __/common/tcp/read.cpp.s
+
+__/common/utils/generateid.o: __/common/utils/generateid.cc.o
+
+.PHONY : __/common/utils/generateid.o
+
+# target to build an object file
+__/common/utils/generateid.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.o
+.PHONY : __/common/utils/generateid.cc.o
+
+__/common/utils/generateid.i: __/common/utils/generateid.cc.i
+
+.PHONY : __/common/utils/generateid.i
+
+# target to preprocess a source file
+__/common/utils/generateid.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.i
+.PHONY : __/common/utils/generateid.cc.i
+
+__/common/utils/generateid.s: __/common/utils/generateid.cc.s
+
+.PHONY : __/common/utils/generateid.s
+
+# target to generate assembly for a file
+__/common/utils/generateid.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/gateway/CMakeFiles/Gateway.dir/build.make src/gateway/CMakeFiles/Gateway.dir/__/common/utils/generateid.cc.s
+.PHONY : __/common/utils/generateid.cc.s
 
 netservice.o: netservice.cc.o
 
@@ -497,15 +578,24 @@ help:
 	@echo "... __/common/config/state.o"
 	@echo "... __/common/config/state.i"
 	@echo "... __/common/config/state.s"
-	@echo "... __/common/srpc/gateway/gateway.pb.o"
-	@echo "... __/common/srpc/gateway/gateway.pb.i"
-	@echo "... __/common/srpc/gateway/gateway.pb.s"
-	@echo "... __/common/srpc/state/state.pb.o"
-	@echo "... __/common/srpc/state/state.pb.i"
-	@echo "... __/common/srpc/state/state.pb.s"
+	@echo "... __/common/grpc/gateway/gateway.grpc.pb.o"
+	@echo "... __/common/grpc/gateway/gateway.grpc.pb.i"
+	@echo "... __/common/grpc/gateway/gateway.grpc.pb.s"
+	@echo "... __/common/grpc/gateway/gateway.pb.o"
+	@echo "... __/common/grpc/gateway/gateway.pb.i"
+	@echo "... __/common/grpc/gateway/gateway.pb.s"
+	@echo "... __/common/grpc/state/state.grpc.pb.o"
+	@echo "... __/common/grpc/state/state.grpc.pb.i"
+	@echo "... __/common/grpc/state/state.grpc.pb.s"
+	@echo "... __/common/grpc/state/state.pb.o"
+	@echo "... __/common/grpc/state/state.pb.i"
+	@echo "... __/common/grpc/state/state.pb.s"
 	@echo "... __/common/tcp/read.o"
 	@echo "... __/common/tcp/read.i"
 	@echo "... __/common/tcp/read.s"
+	@echo "... __/common/utils/generateid.o"
+	@echo "... __/common/utils/generateid.i"
+	@echo "... __/common/utils/generateid.s"
 	@echo "... netservice.o"
 	@echo "... netservice.i"
 	@echo "... netservice.s"

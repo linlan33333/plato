@@ -1,9 +1,6 @@
 #include "state/rpc/service/service.h"
 #include "config/conf.h"
-#include "workflow/WFFacilities.h"
 #include <unistd.h>
-
-static WFFacilities::WaitGroup wait_group(1);
 
 int main(int argc, char* argv[])
 {
@@ -43,12 +40,7 @@ int main(int argc, char* argv[])
     Conf::Init(config_file);
 
     StateRpcService service;
-
     service.Start();
-
-    wait_group.wait();
-	service.Stop();
-	google::protobuf::ShutdownProtobufLibrary();
 
     return 0;
 }

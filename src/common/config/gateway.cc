@@ -36,3 +36,8 @@ uint32_t GatewayConfig::GetThreadNumForNetServer()
 {
     return Conf::GetConf()["gateway"]["tcp_thread_num"].as<std::uint32_t>();
 }
+
+uint32_t GatewayConfig::GetThreadNumForWorkPool()
+{
+    return Conf::GetConf()["gateway"]["workpool_thread_num"].as<std::uint32_t>();
+}

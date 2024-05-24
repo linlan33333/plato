@@ -1,9 +1,8 @@
 #pragma once
 
-#include "srpc/gateway/gateway.srpc.h"
-#include "workflow/WFFacilities.h"
+#include "grpc/gateway/gateway.grpc.pb.h"
+#include <string>
 
-using namespace srpc;
 
 class GatewayCaller
 {
@@ -19,8 +18,5 @@ private:
     GatewayCaller(const GatewayCaller&) = delete;
     GatewayCaller& operator= (const GatewayCaller&) = delete;
 
-    void delconn_done(GatewayResponse *response, srpc::RPCContext *context);
-    void push_done(GatewayResponse *response, srpc::RPCContext *context);
-
-    Gateway::SRPCClient client_;
+    std::unique_ptr<Gateway::Stub> stub_;
 };

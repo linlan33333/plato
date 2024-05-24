@@ -2,11 +2,14 @@
 cmake_minimum_required(VERSION 3.0)
 project(plato)
 
+# 使用grpc得把这玩意包进来，不然报错找不到protobuf之类的库文件
+include(common.cmake)
+
 # 设置gdb调试生成debug版本
 set(CMAKE_BUILD_TYPE "Debug")
 
-# 设置C++标准为C++17
-set(CMAKE_CXX_STANDARD 17)
+# 设置C++标准为C++17，common.cmake文件中也得设置一下，要改记得改一下common.cmake的
+# set(CMAKE_CXX_STANDARD 17)
 
 # 将-std=c++17之类的添加到编译选项
 add_compile_options(-std=c++17)

@@ -1,9 +1,8 @@
 #pragma once
 
-#include "srpc/gateway/cmdcontext.h"
+#include "grpc/gateway/cmdcontext.h"
 #include <muduo/net/TcpServer.h>
 #include <muduo/net/EventLoop.h>
-#include <muduo/net/TcpConnection.h>
 #include <map>
 #include <shared_mutex>
 
@@ -24,7 +23,7 @@ public:
     /// @brief 启动gateway的网络服务器
     void Start();
 
-    muduo::net::TcpConnectionPtr* GetConnById(unsigned long long connid);
+    muduo::net::TcpConnection* GetConnById(unsigned long long connid);
 
 private:
     void OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time);
@@ -34,6 +33,7 @@ private:
 
     muduo::net::EventLoop* loop_;
 
-    std::map<unsigned long long, const muduo::net::TcpConnectionPtr*> connid_map_;
+    // key是muduo::net::TcpConnection的地址，value是muduo::net::TcpConnection的指针
+    std::map<unsigned long long, muduo::net::TcpConnection*> connid_map_;
     std::shared_mutex connid_map_mtx_;
 };

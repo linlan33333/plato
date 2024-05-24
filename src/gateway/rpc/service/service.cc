@@ -1,21 +1,16 @@
 #include "gateway/rpc/service/service.h"
-#include "gateway/rpc/service/impl.h"
 #include "config/gateway.h"
 
-GatewayRpcService::GatewayRpcService(NetService *net_service)
+GatewayRpcService::GatewayRpcService(NetService* net_service)
     : gateway_service_impl_(net_service)
 {
-    // 注册服务
-    server_.add_service(&gateway_service_impl_);
+    std::string addr = GatewayConfig::Get().GetIp() + ":" + std::to_string(GatewayConfig::Get().GetPortForRPCService());
+    builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
+    builder.RegisterService(&gateway_service_impl_);
+    server_ = builder.BuildAndStart();
 }
 
 void GatewayRpcService::Start()
 {
-    // 启动rpcserver
-    server_.start(GatewayConfig::Get().GetPortForRPCService());
-}
-
-void GatewayRpcService::Stop()
-{
-    server_.stop();
+    server_->Wait();
 }
