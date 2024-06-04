@@ -31,6 +31,42 @@ src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o: ../src/c
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o: ../include/common/grpc/state/state.pb.h
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o: ../src/common/grpc/state/state.pb.cc
 
+src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o: ../include/common/idl/message/message.pb.h
+src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o: ../src/common/idl/message/message.pb.cc
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o: ../include/common/timewheel/time_wheel.h
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o: ../include/common/timewheel/timer_task.h
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o: ../src/common/timewheel/time_wheel.cpp
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o: ../include/common/timewheel/time_wheel.h
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o: ../include/common/timewheel/time_wheel_scheduler.h
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o: ../include/common/timewheel/timer_task.h
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o: ../src/common/timewheel/time_wheel_scheduler.cpp
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o: ../include/common/timewheel/timer_task.h
+src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o: ../src/common/timewheel/timer_task.cpp
+
+src/state/CMakeFiles/State.dir/cache.cc.o: ../include/common/grpc/gateway/gateway.grpc.pb.h
+src/state/CMakeFiles/State.dir/cache.cc.o: ../include/common/grpc/gateway/gateway.pb.h
+src/state/CMakeFiles/State.dir/cache.cc.o: ../include/state/cache.h
+src/state/CMakeFiles/State.dir/cache.cc.o: ../include/state/rpc/client/gatewaycaller.h
+src/state/CMakeFiles/State.dir/cache.cc.o: ../include/state/state.h
+src/state/CMakeFiles/State.dir/cache.cc.o: ../src/state/cache.cc
+
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/grpc/gateway/gateway.grpc.pb.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/grpc/gateway/gateway.pb.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/grpc/state/cmdcontext.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/idl/message/message.pb.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/timewheel/time_wheel.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/timewheel/time_wheel_scheduler.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/common/timewheel/timer_task.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/state/cache.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/state/cmdhandler.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/state/rpc/client/gatewaycaller.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/state/state.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../include/state/timer.h
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../src/state/cmdhandler.cc
+
 src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o: ../include/common/config/conf.h
 src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o: ../include/common/config/gateway.h
 src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o: ../include/common/grpc/gateway/gateway.grpc.pb.h
@@ -40,11 +76,16 @@ src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o: ../src/state/rpc/c
 
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/grpc/gateway/gateway.grpc.pb.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/grpc/gateway/gateway.pb.h
+src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/grpc/state/cmdcontext.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/grpc/state/state.grpc.pb.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/grpc/state/state.pb.h
+src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/idl/message/message.pb.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/common/threadpool/ThreadPool.h
+src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/state/cache.h
+src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/state/cmdhandler.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/state/rpc/client/gatewaycaller.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/state/rpc/service/impl.h
+src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/state/state.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../include/state/workpool.h
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../src/state/rpc/service/impl.cc
 
@@ -59,9 +100,30 @@ src/state/CMakeFiles/State.dir/rpc/service/service.cc.o: ../src/state/rpc/servic
 src/state/CMakeFiles/State.dir/server.cc.o: ../include/common/config/conf.h
 src/state/CMakeFiles/State.dir/server.cc.o: ../include/common/grpc/state/state.grpc.pb.h
 src/state/CMakeFiles/State.dir/server.cc.o: ../include/common/grpc/state/state.pb.h
+src/state/CMakeFiles/State.dir/server.cc.o: ../include/common/timewheel/time_wheel.h
+src/state/CMakeFiles/State.dir/server.cc.o: ../include/common/timewheel/time_wheel_scheduler.h
+src/state/CMakeFiles/State.dir/server.cc.o: ../include/common/timewheel/timer_task.h
 src/state/CMakeFiles/State.dir/server.cc.o: ../include/state/rpc/service/impl.h
 src/state/CMakeFiles/State.dir/server.cc.o: ../include/state/rpc/service/service.h
+src/state/CMakeFiles/State.dir/server.cc.o: ../include/state/timer.h
 src/state/CMakeFiles/State.dir/server.cc.o: ../src/state/server.cc
+
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/common/grpc/gateway/gateway.grpc.pb.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/common/grpc/gateway/gateway.pb.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/common/timewheel/time_wheel.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/common/timewheel/time_wheel_scheduler.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/common/timewheel/timer_task.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/state/cache.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/state/rpc/client/gatewaycaller.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/state/state.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../include/state/timer.h
+src/state/CMakeFiles/State.dir/state.cc.o: ../src/state/state.cc
+
+src/state/CMakeFiles/State.dir/timer.cc.o: ../include/common/timewheel/time_wheel.h
+src/state/CMakeFiles/State.dir/timer.cc.o: ../include/common/timewheel/time_wheel_scheduler.h
+src/state/CMakeFiles/State.dir/timer.cc.o: ../include/common/timewheel/timer_task.h
+src/state/CMakeFiles/State.dir/timer.cc.o: ../include/state/timer.h
+src/state/CMakeFiles/State.dir/timer.cc.o: ../src/state/timer.cc
 
 src/state/CMakeFiles/State.dir/workpool.cc.o: ../include/common/config/conf.h
 src/state/CMakeFiles/State.dir/workpool.cc.o: ../include/common/config/state.h

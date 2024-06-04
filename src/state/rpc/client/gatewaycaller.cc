@@ -15,7 +15,7 @@ GatewayCaller &GatewayCaller::Get()
     return caller;
 }
 
-void GatewayCaller::DelConn(unsigned long long connid, std::string data)
+void GatewayCaller::DelConn(uint64_t connid, std::string data)
 {
     GatewayRequest delconn_req;
     delconn_req.set_connid(connid);
@@ -27,7 +27,7 @@ void GatewayCaller::DelConn(unsigned long long connid, std::string data)
     stub_->DelConn(&context, delconn_req, &resp);
 }
 
-void GatewayCaller::Push(unsigned long long connid, std::string data)
+void GatewayCaller::Push(uint64_t connid, std::string data)
 {
     GatewayRequest push_req;
     push_req.set_connid(connid);

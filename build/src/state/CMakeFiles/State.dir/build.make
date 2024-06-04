@@ -57,9 +57,35 @@ include src/state/CMakeFiles/State.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/state/CMakeFiles/State.dir/flags.make
 
+src/state/CMakeFiles/State.dir/cache.cc.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/cache.cc.o: ../src/state/cache.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/state/CMakeFiles/State.dir/cache.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/cache.cc.o -c /home/zly/okramoon/C++/plato/src/state/cache.cc
+
+src/state/CMakeFiles/State.dir/cache.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/cache.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/state/cache.cc > CMakeFiles/State.dir/cache.cc.i
+
+src/state/CMakeFiles/State.dir/cache.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/cache.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/state/cache.cc -o CMakeFiles/State.dir/cache.cc.s
+
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/cmdhandler.cc.o: ../src/state/cmdhandler.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/state/CMakeFiles/State.dir/cmdhandler.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/cmdhandler.cc.o -c /home/zly/okramoon/C++/plato/src/state/cmdhandler.cc
+
+src/state/CMakeFiles/State.dir/cmdhandler.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/cmdhandler.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/state/cmdhandler.cc > CMakeFiles/State.dir/cmdhandler.cc.i
+
+src/state/CMakeFiles/State.dir/cmdhandler.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/cmdhandler.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/state/cmdhandler.cc -o CMakeFiles/State.dir/cmdhandler.cc.s
+
 src/state/CMakeFiles/State.dir/server.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/server.cc.o: ../src/state/server.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/state/CMakeFiles/State.dir/server.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/state/CMakeFiles/State.dir/server.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/server.cc.o -c /home/zly/okramoon/C++/plato/src/state/server.cc
 
 src/state/CMakeFiles/State.dir/server.cc.i: cmake_force
@@ -70,9 +96,35 @@ src/state/CMakeFiles/State.dir/server.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/server.cc.s"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/state/server.cc -o CMakeFiles/State.dir/server.cc.s
 
+src/state/CMakeFiles/State.dir/state.cc.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/state.cc.o: ../src/state/state.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/state/CMakeFiles/State.dir/state.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/state.cc.o -c /home/zly/okramoon/C++/plato/src/state/state.cc
+
+src/state/CMakeFiles/State.dir/state.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/state.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/state/state.cc > CMakeFiles/State.dir/state.cc.i
+
+src/state/CMakeFiles/State.dir/state.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/state.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/state/state.cc -o CMakeFiles/State.dir/state.cc.s
+
+src/state/CMakeFiles/State.dir/timer.cc.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/timer.cc.o: ../src/state/timer.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/state/CMakeFiles/State.dir/timer.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/timer.cc.o -c /home/zly/okramoon/C++/plato/src/state/timer.cc
+
+src/state/CMakeFiles/State.dir/timer.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/timer.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/state/timer.cc > CMakeFiles/State.dir/timer.cc.i
+
+src/state/CMakeFiles/State.dir/timer.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/timer.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/state/timer.cc -o CMakeFiles/State.dir/timer.cc.s
+
 src/state/CMakeFiles/State.dir/workpool.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/workpool.cc.o: ../src/state/workpool.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/state/CMakeFiles/State.dir/workpool.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/state/CMakeFiles/State.dir/workpool.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/workpool.cc.o -c /home/zly/okramoon/C++/plato/src/state/workpool.cc
 
 src/state/CMakeFiles/State.dir/workpool.cc.i: cmake_force
@@ -85,7 +137,7 @@ src/state/CMakeFiles/State.dir/workpool.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o: ../src/state/rpc/client/gatewaycaller.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o -c /home/zly/okramoon/C++/plato/src/state/rpc/client/gatewaycaller.cc
 
 src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.i: cmake_force
@@ -98,7 +150,7 @@ src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o: ../src/state/rpc/service/impl.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/rpc/service/impl.cc.o -c /home/zly/okramoon/C++/plato/src/state/rpc/service/impl.cc
 
 src/state/CMakeFiles/State.dir/rpc/service/impl.cc.i: cmake_force
@@ -111,7 +163,7 @@ src/state/CMakeFiles/State.dir/rpc/service/impl.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/rpc/service/service.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/rpc/service/service.cc.o: ../src/state/rpc/service/service.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/state/CMakeFiles/State.dir/rpc/service/service.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/state/CMakeFiles/State.dir/rpc/service/service.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/rpc/service/service.cc.o -c /home/zly/okramoon/C++/plato/src/state/rpc/service/service.cc
 
 src/state/CMakeFiles/State.dir/rpc/service/service.cc.i: cmake_force
@@ -124,7 +176,7 @@ src/state/CMakeFiles/State.dir/rpc/service/service.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/__/common/config/discovery.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/config/discovery.cc.o: ../src/common/config/discovery.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/discovery.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/discovery.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/config/discovery.cc.o -c /home/zly/okramoon/C++/plato/src/common/config/discovery.cc
 
 src/state/CMakeFiles/State.dir/__/common/config/discovery.cc.i: cmake_force
@@ -137,7 +189,7 @@ src/state/CMakeFiles/State.dir/__/common/config/discovery.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/__/common/config/gateway.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/config/gateway.cc.o: ../src/common/config/gateway.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/gateway.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/gateway.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/config/gateway.cc.o -c /home/zly/okramoon/C++/plato/src/common/config/gateway.cc
 
 src/state/CMakeFiles/State.dir/__/common/config/gateway.cc.i: cmake_force
@@ -150,7 +202,7 @@ src/state/CMakeFiles/State.dir/__/common/config/gateway.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/__/common/config/ipconfig.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/config/ipconfig.cc.o: ../src/common/config/ipconfig.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/ipconfig.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/ipconfig.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/config/ipconfig.cc.o -c /home/zly/okramoon/C++/plato/src/common/config/ipconfig.cc
 
 src/state/CMakeFiles/State.dir/__/common/config/ipconfig.cc.i: cmake_force
@@ -163,7 +215,7 @@ src/state/CMakeFiles/State.dir/__/common/config/ipconfig.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/__/common/config/state.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/config/state.cc.o: ../src/common/config/state.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/state.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/state/CMakeFiles/State.dir/__/common/config/state.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/config/state.cc.o -c /home/zly/okramoon/C++/plato/src/common/config/state.cc
 
 src/state/CMakeFiles/State.dir/__/common/config/state.cc.i: cmake_force
@@ -176,7 +228,7 @@ src/state/CMakeFiles/State.dir/__/common/config/state.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o: ../src/common/grpc/state/state.grpc.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/state/state.grpc.pb.cc
 
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.i: cmake_force
@@ -189,7 +241,7 @@ src/state/CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.s: cmake_fo
 
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o: ../src/common/grpc/state/state.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/state/state.pb.cc
 
 src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.i: cmake_force
@@ -202,7 +254,7 @@ src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.s: cmake_force
 
 src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o: ../src/common/grpc/gateway/gateway.grpc.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.grpc.pb.cc
 
 src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.i: cmake_force
@@ -215,7 +267,7 @@ src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.s: cmak
 
 src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o: src/state/CMakeFiles/State.dir/flags.make
 src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o: ../src/common/grpc/gateway/gateway.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.pb.cc
 
 src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.i: cmake_force
@@ -226,9 +278,65 @@ src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.s"
 	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/grpc/gateway/gateway.pb.cc -o CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.s
 
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o: ../src/common/timewheel/time_wheel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o -c /home/zly/okramoon/C++/plato/src/common/timewheel/time_wheel.cpp
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/timewheel/time_wheel.cpp > CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.i
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/timewheel/time_wheel.cpp -o CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.s
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o: ../src/common/timewheel/time_wheel_scheduler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o -c /home/zly/okramoon/C++/plato/src/common/timewheel/time_wheel_scheduler.cpp
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/timewheel/time_wheel_scheduler.cpp > CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.i
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/timewheel/time_wheel_scheduler.cpp -o CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.s
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o: ../src/common/timewheel/timer_task.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o -c /home/zly/okramoon/C++/plato/src/common/timewheel/timer_task.cpp
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/timewheel/timer_task.cpp > CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.i
+
+src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/timewheel/timer_task.cpp -o CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.s
+
+src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o: src/state/CMakeFiles/State.dir/flags.make
+src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o: ../src/common/idl/message/message.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o -c /home/zly/okramoon/C++/plato/src/common/idl/message/message.pb.cc
+
+src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.i"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zly/okramoon/C++/plato/src/common/idl/message/message.pb.cc > CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.i
+
+src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.s"
+	cd /home/zly/okramoon/C++/plato/build/src/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zly/okramoon/C++/plato/src/common/idl/message/message.pb.cc -o CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.s
+
 # Object files for target State
 State_OBJECTS = \
+"CMakeFiles/State.dir/cache.cc.o" \
+"CMakeFiles/State.dir/cmdhandler.cc.o" \
 "CMakeFiles/State.dir/server.cc.o" \
+"CMakeFiles/State.dir/state.cc.o" \
+"CMakeFiles/State.dir/timer.cc.o" \
 "CMakeFiles/State.dir/workpool.cc.o" \
 "CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o" \
 "CMakeFiles/State.dir/rpc/service/impl.cc.o" \
@@ -240,12 +348,20 @@ State_OBJECTS = \
 "CMakeFiles/State.dir/__/common/grpc/state/state.grpc.pb.cc.o" \
 "CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o" \
 "CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o" \
-"CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o"
+"CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o" \
+"CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o" \
+"CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o" \
+"CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o" \
+"CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o"
 
 # External object files for target State
 State_EXTERNAL_OBJECTS =
 
+../bin/State: src/state/CMakeFiles/State.dir/cache.cc.o
+../bin/State: src/state/CMakeFiles/State.dir/cmdhandler.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/server.cc.o
+../bin/State: src/state/CMakeFiles/State.dir/state.cc.o
+../bin/State: src/state/CMakeFiles/State.dir/timer.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/workpool.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/rpc/client/gatewaycaller.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/rpc/service/impl.cc.o
@@ -258,6 +374,10 @@ State_EXTERNAL_OBJECTS =
 ../bin/State: src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.grpc.pb.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/__/common/grpc/gateway/gateway.pb.cc.o
+../bin/State: src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o
+../bin/State: src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o
+../bin/State: src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o
+../bin/State: src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o
 ../bin/State: src/state/CMakeFiles/State.dir/build.make
 ../bin/State: /usr/local/lib/libgrpc++_reflection.a
 ../bin/State: /usr/local/lib/libgrpc++.a
@@ -316,7 +436,7 @@ State_EXTERNAL_OBJECTS =
 ../bin/State: /usr/local/lib/libssl.a
 ../bin/State: /usr/local/lib/libcrypto.a
 ../bin/State: src/state/CMakeFiles/State.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ../../../bin/State"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zly/okramoon/C++/plato/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable ../../../bin/State"
 	cd /home/zly/okramoon/C++/plato/build/src/state && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/State.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

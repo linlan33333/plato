@@ -13,8 +13,8 @@ public:
     NetService(muduo::net::EventLoop* loop, const muduo::net::InetAddress &listenAddr);
 
     /// @brief 当接到state server发来的删除连接del信令时，会执行该业务函数
-    /// @param cmd_context 
-    void CloseConn(CmdContext cmd_context);
+    /// @param connid 
+    void CloseConn(uint64_t connid);
 
     /// @brief 当接到state server发来的发送消息push信令时，执行该业务函数
     /// @param cmd_context 

@@ -9,9 +9,9 @@ class GatewayCaller
 public:
     static GatewayCaller& Get();
 
-    void DelConn(unsigned long long connid, std::string data);
+    void DelConn(uint64_t connid, std::string data);
 
-    void Push(unsigned long long connid, std::string data);
+    void Push(uint64_t connid, std::string data);
 
 private:
     GatewayCaller();

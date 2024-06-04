@@ -15,12 +15,12 @@ NetService::NetService(muduo::net::EventLoop *loop, const muduo::net::InetAddres
     server_.setThreadNum(GatewayConfig::Get().GetThreadNumForNetServer());
 }
 
-void NetService::CloseConn(CmdContext cmd_context)
+void NetService::CloseConn(uint64_t connid)
 {
     // 上写锁
     std::unique_lock<std::shared_mutex> lck(connid_map_mtx_);
     // 去connid的map表中找到连接对象
-    auto connid_pair = connid_map_.find(cmd_context.ConnID);
+    auto connid_pair = connid_map_.find(connid);
     if (connid_pair != connid_map_.end()) 
     {
         // 关闭连接
@@ -76,12 +76,12 @@ muduo::net::TcpConnection *NetService::GetConnById(unsigned long long connid)
 void NetService::OnMessage(const muduo::net::TcpConnectionPtr &conn, muduo::net::Buffer *buf, muduo::Timestamp time)
 {
     // 组装信令，后续通过RPC调用发给state server
-    // std::string data = Read::Get().ReadData(buf);
+    std::string data = Read::Get().ReadData(buf);
     // 现在先测试回声数据
-    std::string data = buf->retrieveAllAsString();
+    // std::string data = buf->retrieveAllAsString();
 
-    // 拿到客户端的endpoint
-    std::string endpoint = conn.get()->peerAddress().toIpPort();
+    // endpoint指的是本网关的ip:port
+    std::string endpoint = GatewayConfig::Get().GetIp() + ":" + std::to_string(GatewayConfig::Get().GetPortForNetService());
     uint64_t connid = boost::any_cast<uint64_t>(conn->getContext());
 
     StateCaller::Get().SendMsg(endpoint, connid, data);
@@ -92,14 +92,15 @@ void NetService::onConnection(const muduo::net::TcpConnectionPtr &conn)
     if (conn->connected())
     {
         spdlog::info("{0} -> {1} state: 上线", conn->peerAddress().toIpPort(), conn->localAddress().toIpPort());
-        // 存储该conn对象，key是工具类生成的id，这样就确保只要conn存在，就只有唯一的id对应它
+        // 存储该conn对象，key是工具类生成的id，这个id不光要确保只要conn存在，就只有唯一的id对应它，还要确保这个id不会出现复用的情况，
+        // 比如这个id对应的连接发送一条消息给另一个用户B，然后突然连接断开，此时新用户C建立好连接时，如果id可复用，分配给C的id是原本A的id
+        // 就会造成B回复A的消息通过这个id发送给了新用户C，造成消息错乱。因此这个id生成器是基于时间生成的，不能采用conn的fd、内存地址之类的作为id
         uint64_t connid = GenerateId::Get().GetID();
         // muduo库中TcpConnection对象预留了一个字段context_，可以放一些信息，这里存放connid，下次该对象收到消息触发
         // OnMessage回调函数时，就可以从中取出该connid，向state server发起rpc请求时携带过去，回头好找该TcpConnection对象
         std::unique_lock<std::shared_mutex> lck(connid_map_mtx_);
         conn->setContext(connid);
-        // 大map映射表存储该连接对象和对应id,..................这个对象压根没存进去，回头来排查原因，
-        // 怀疑就是那个万恶的shared_from_this产生的TcpConnection智能指针对象后面析构了，回头想想怎么办
+        // 大map映射表存储该连接对象和对应id
         connid_map_.insert({connid, conn.get()});
     }
     else

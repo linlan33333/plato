@@ -2,6 +2,8 @@
 #include "state/workpool.h"
 #include "rpc/client/gatewaycaller.h"
 #include "grpc/state/state.pb.h"
+#include "cmdhandler.h"
+#include "grpc/state/cmdcontext.h"
 #include <spdlog/spdlog.h>
 
 grpc::Status StateServerRpcServiceImpl::CancelConn(grpc::ServerContext* context, const StateRequest* request, StateResponse *response)
@@ -17,14 +19,14 @@ grpc::Status StateServerRpcServiceImpl::CancelConn(grpc::ServerContext* context,
 
 grpc::Status StateServerRpcServiceImpl::SendMsg(grpc::ServerContext* context, const StateRequest* request, StateResponse *response)
 {
+    CmdContext ctx;
+    ctx.Cmd = CMD::SendMsgCmd;
+    ctx.ConnID = request->connid();
+    ctx.Endpoint = request->endpoint();
+    ctx.Payload = request->data();
 
-    std::string endpoint = request->endpoint();
-    unsigned long long connid = request->connid();
-    std::string data = request->data();
-
-    // 这里先测试echo效果，即网关发送给我什么消息，我就回复给网关什么消息
-    // 这里应当调用rpc客户端的接口发送回消息，把这个任务扔给线程池异步去做
-    WorkPool::Get().Push(std::bind(&GatewayCaller::Push, &(GatewayCaller::Get()), connid, data));
+    // 这里处理网关发来的信令，把信令直接丢给CmdHandler形成一个任务，把这个任务扔给线程池异步去做
+    WorkPool::Get().Push(std::bind(&CmdHandler::MsgCmdHandler, &(CmdHandler::Get()), ctx));
 
     // 返回RPC响应，只需设置好值就行，会自动帮我们将response发回去
     response->set_code(0);

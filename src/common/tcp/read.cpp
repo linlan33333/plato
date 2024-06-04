@@ -1,5 +1,6 @@
 #include "tcp/read.h"
 #include <spdlog/spdlog.h>
+#include <iostream>
 
 Read &Read::Get()
 {
@@ -14,8 +15,9 @@ std::string Read::ReadData(muduo::net::Buffer *buffer)
     }
 
     // 先取四字节固定消息头数据，解析固定消息头
-    // std::string fixed_header = buffer->retrieveAsString(4);
-    int32_t len = buffer->peekInt32();
+    std::string fixed_header = buffer->retrieveAsString(4);
+    uint32_t len;
+    fixed_header.copy((char*)&len, 4, 0);
     std::string data = ReadFixedData(buffer, len);
 
     return data;

@@ -1,5 +1,6 @@
 #include "state/rpc/service/service.h"
 #include "config/conf.h"
+#include "timer.h"
 #include <unistd.h>
 
 int main(int argc, char* argv[])
@@ -38,6 +39,9 @@ int main(int argc, char* argv[])
 
     // 初始化全局配置
     Conf::Init(config_file);
+
+    // 初始化定时器
+    Timer::Get().Init();
 
     StateRpcService service;
     service.Start();

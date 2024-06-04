@@ -341,6 +341,168 @@ __/common/grpc/state/state.pb.cc.s:
 	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/grpc/state/state.pb.cc.s
 .PHONY : __/common/grpc/state/state.pb.cc.s
 
+__/common/idl/message/message.pb.o: __/common/idl/message/message.pb.cc.o
+
+.PHONY : __/common/idl/message/message.pb.o
+
+# target to build an object file
+__/common/idl/message/message.pb.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.o
+.PHONY : __/common/idl/message/message.pb.cc.o
+
+__/common/idl/message/message.pb.i: __/common/idl/message/message.pb.cc.i
+
+.PHONY : __/common/idl/message/message.pb.i
+
+# target to preprocess a source file
+__/common/idl/message/message.pb.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.i
+.PHONY : __/common/idl/message/message.pb.cc.i
+
+__/common/idl/message/message.pb.s: __/common/idl/message/message.pb.cc.s
+
+.PHONY : __/common/idl/message/message.pb.s
+
+# target to generate assembly for a file
+__/common/idl/message/message.pb.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/idl/message/message.pb.cc.s
+.PHONY : __/common/idl/message/message.pb.cc.s
+
+__/common/timewheel/time_wheel.o: __/common/timewheel/time_wheel.cpp.o
+
+.PHONY : __/common/timewheel/time_wheel.o
+
+# target to build an object file
+__/common/timewheel/time_wheel.cpp.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.o
+.PHONY : __/common/timewheel/time_wheel.cpp.o
+
+__/common/timewheel/time_wheel.i: __/common/timewheel/time_wheel.cpp.i
+
+.PHONY : __/common/timewheel/time_wheel.i
+
+# target to preprocess a source file
+__/common/timewheel/time_wheel.cpp.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.i
+.PHONY : __/common/timewheel/time_wheel.cpp.i
+
+__/common/timewheel/time_wheel.s: __/common/timewheel/time_wheel.cpp.s
+
+.PHONY : __/common/timewheel/time_wheel.s
+
+# target to generate assembly for a file
+__/common/timewheel/time_wheel.cpp.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel.cpp.s
+.PHONY : __/common/timewheel/time_wheel.cpp.s
+
+__/common/timewheel/time_wheel_scheduler.o: __/common/timewheel/time_wheel_scheduler.cpp.o
+
+.PHONY : __/common/timewheel/time_wheel_scheduler.o
+
+# target to build an object file
+__/common/timewheel/time_wheel_scheduler.cpp.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.o
+.PHONY : __/common/timewheel/time_wheel_scheduler.cpp.o
+
+__/common/timewheel/time_wheel_scheduler.i: __/common/timewheel/time_wheel_scheduler.cpp.i
+
+.PHONY : __/common/timewheel/time_wheel_scheduler.i
+
+# target to preprocess a source file
+__/common/timewheel/time_wheel_scheduler.cpp.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.i
+.PHONY : __/common/timewheel/time_wheel_scheduler.cpp.i
+
+__/common/timewheel/time_wheel_scheduler.s: __/common/timewheel/time_wheel_scheduler.cpp.s
+
+.PHONY : __/common/timewheel/time_wheel_scheduler.s
+
+# target to generate assembly for a file
+__/common/timewheel/time_wheel_scheduler.cpp.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/time_wheel_scheduler.cpp.s
+.PHONY : __/common/timewheel/time_wheel_scheduler.cpp.s
+
+__/common/timewheel/timer_task.o: __/common/timewheel/timer_task.cpp.o
+
+.PHONY : __/common/timewheel/timer_task.o
+
+# target to build an object file
+__/common/timewheel/timer_task.cpp.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.o
+.PHONY : __/common/timewheel/timer_task.cpp.o
+
+__/common/timewheel/timer_task.i: __/common/timewheel/timer_task.cpp.i
+
+.PHONY : __/common/timewheel/timer_task.i
+
+# target to preprocess a source file
+__/common/timewheel/timer_task.cpp.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.i
+.PHONY : __/common/timewheel/timer_task.cpp.i
+
+__/common/timewheel/timer_task.s: __/common/timewheel/timer_task.cpp.s
+
+.PHONY : __/common/timewheel/timer_task.s
+
+# target to generate assembly for a file
+__/common/timewheel/timer_task.cpp.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/__/common/timewheel/timer_task.cpp.s
+.PHONY : __/common/timewheel/timer_task.cpp.s
+
+cache.o: cache.cc.o
+
+.PHONY : cache.o
+
+# target to build an object file
+cache.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/cache.cc.o
+.PHONY : cache.cc.o
+
+cache.i: cache.cc.i
+
+.PHONY : cache.i
+
+# target to preprocess a source file
+cache.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/cache.cc.i
+.PHONY : cache.cc.i
+
+cache.s: cache.cc.s
+
+.PHONY : cache.s
+
+# target to generate assembly for a file
+cache.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/cache.cc.s
+.PHONY : cache.cc.s
+
+cmdhandler.o: cmdhandler.cc.o
+
+.PHONY : cmdhandler.o
+
+# target to build an object file
+cmdhandler.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/cmdhandler.cc.o
+.PHONY : cmdhandler.cc.o
+
+cmdhandler.i: cmdhandler.cc.i
+
+.PHONY : cmdhandler.i
+
+# target to preprocess a source file
+cmdhandler.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/cmdhandler.cc.i
+.PHONY : cmdhandler.cc.i
+
+cmdhandler.s: cmdhandler.cc.s
+
+.PHONY : cmdhandler.s
+
+# target to generate assembly for a file
+cmdhandler.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/cmdhandler.cc.s
+.PHONY : cmdhandler.cc.s
+
 rpc/client/gatewaycaller.o: rpc/client/gatewaycaller.cc.o
 
 .PHONY : rpc/client/gatewaycaller.o
@@ -449,6 +611,60 @@ server.cc.s:
 	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/server.cc.s
 .PHONY : server.cc.s
 
+state.o: state.cc.o
+
+.PHONY : state.o
+
+# target to build an object file
+state.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/state.cc.o
+.PHONY : state.cc.o
+
+state.i: state.cc.i
+
+.PHONY : state.i
+
+# target to preprocess a source file
+state.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/state.cc.i
+.PHONY : state.cc.i
+
+state.s: state.cc.s
+
+.PHONY : state.s
+
+# target to generate assembly for a file
+state.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/state.cc.s
+.PHONY : state.cc.s
+
+timer.o: timer.cc.o
+
+.PHONY : timer.o
+
+# target to build an object file
+timer.cc.o:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/timer.cc.o
+.PHONY : timer.cc.o
+
+timer.i: timer.cc.i
+
+.PHONY : timer.i
+
+# target to preprocess a source file
+timer.cc.i:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/timer.cc.i
+.PHONY : timer.cc.i
+
+timer.s: timer.cc.s
+
+.PHONY : timer.s
+
+# target to generate assembly for a file
+timer.cc.s:
+	cd /home/zly/okramoon/C++/plato/build && $(MAKE) -f src/state/CMakeFiles/State.dir/build.make src/state/CMakeFiles/State.dir/timer.cc.s
+.PHONY : timer.cc.s
+
 workpool.o: workpool.cc.o
 
 .PHONY : workpool.o
@@ -509,6 +725,24 @@ help:
 	@echo "... __/common/grpc/state/state.pb.o"
 	@echo "... __/common/grpc/state/state.pb.i"
 	@echo "... __/common/grpc/state/state.pb.s"
+	@echo "... __/common/idl/message/message.pb.o"
+	@echo "... __/common/idl/message/message.pb.i"
+	@echo "... __/common/idl/message/message.pb.s"
+	@echo "... __/common/timewheel/time_wheel.o"
+	@echo "... __/common/timewheel/time_wheel.i"
+	@echo "... __/common/timewheel/time_wheel.s"
+	@echo "... __/common/timewheel/time_wheel_scheduler.o"
+	@echo "... __/common/timewheel/time_wheel_scheduler.i"
+	@echo "... __/common/timewheel/time_wheel_scheduler.s"
+	@echo "... __/common/timewheel/timer_task.o"
+	@echo "... __/common/timewheel/timer_task.i"
+	@echo "... __/common/timewheel/timer_task.s"
+	@echo "... cache.o"
+	@echo "... cache.i"
+	@echo "... cache.s"
+	@echo "... cmdhandler.o"
+	@echo "... cmdhandler.i"
+	@echo "... cmdhandler.s"
 	@echo "... rpc/client/gatewaycaller.o"
 	@echo "... rpc/client/gatewaycaller.i"
 	@echo "... rpc/client/gatewaycaller.s"
@@ -521,6 +755,12 @@ help:
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
+	@echo "... state.o"
+	@echo "... state.i"
+	@echo "... state.s"
+	@echo "... timer.o"
+	@echo "... timer.i"
+	@echo "... timer.s"
 	@echo "... workpool.o"
 	@echo "... workpool.i"
 	@echo "... workpool.s"

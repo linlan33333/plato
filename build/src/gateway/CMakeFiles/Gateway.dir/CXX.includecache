@@ -403,6 +403,8 @@ tcp/read.h
 /home/zly/okramoon/C++/plato/src/common/tcp/tcp/read.h
 spdlog/spdlog.h
 -
+iostream
+-
 
 /home/zly/okramoon/C++/plato/src/common/utils/generateid.cc
 utils/generateid.h
@@ -435,10 +437,12 @@ grpcpp/grpcpp.h
 -
 
 /home/zly/okramoon/C++/plato/src/gateway/rpc/service/impl.cc
-rpc/service/impl.h
-/home/zly/okramoon/C++/plato/src/gateway/rpc/service/rpc/service/impl.h
+gateway/rpc/service/impl.h
+/home/zly/okramoon/C++/plato/src/gateway/rpc/service/gateway/rpc/service/impl.h
 gateway/workpool.h
 /home/zly/okramoon/C++/plato/src/gateway/rpc/service/gateway/workpool.h
+spdlog/spdlog.h
+-
 spdlog/spdlog.h
 -
 

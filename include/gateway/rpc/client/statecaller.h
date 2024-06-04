@@ -7,9 +7,9 @@ class StateCaller
 public:
     static StateCaller& Get();
 
-    void CancelConn(std::string endpoint, unsigned long long connid, std::string data);
+    void CancelConn(std::string endpoint, uint64_t connid, std::string data);
 
-    void SendMsg(std::string endpoint, unsigned long long connid, std::string data);
+    void SendMsg(std::string endpoint, uint64_t connid, std::string data);
 
 private:
     StateCaller();

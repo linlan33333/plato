@@ -10,7 +10,7 @@ StateCaller::StateCaller()
 
 }
 
-void StateCaller::CancelConn(std::string endpoint, unsigned long long connid, std::string data)
+void StateCaller::CancelConn(std::string endpoint, uint64_t connid, std::string data)
 {
     // 这个逻辑暂时还没学，先不管
     // 是不是去mainLoop中删掉该连接的有关信息？
@@ -22,7 +22,7 @@ StateCaller& StateCaller::Get()
     return caller;
 }
 
-void StateCaller::SendMsg(std::string endpoint, unsigned long long connid, std::string data)
+void StateCaller::SendMsg(std::string endpoint, uint64_t connid, std::string data)
 {
     StateRequest push_req;
     push_req.set_endpoint(endpoint);

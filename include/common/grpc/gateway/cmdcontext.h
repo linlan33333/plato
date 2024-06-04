@@ -16,6 +16,6 @@ public:
     CmdContext() : Cmd(CMD::DelConnCmd), ConnID(0) {}
 
     CMD Cmd;
-    int ConnID;
+    uint64_t ConnID;
     std::string Payload;
 };

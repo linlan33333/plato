@@ -16,6 +16,7 @@ public:
     CmdContext() : Cmd(CMD::CancelConnCmd), ConnID(0) {}
 
     CMD Cmd;
-    int ConnID;
+    std::string Endpoint;
+    uint64_t ConnID;
     std::string Payload;
 };
