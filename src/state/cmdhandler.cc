@@ -59,9 +59,14 @@ void CmdHandler::LoginMsgHandler(CmdContext& ctx, message::MsgCmd& cmd)
     std::cout << "恭喜你登录成功" << std::endl;
 
     // 存储该用户的连接状态
-    CacheState::Get().StoreConnIDState(ctx.ConnID, std::make_shared<ConnectionState>(ctx.ConnID, login_msg.head().deviceid()));
-    // 设置登出定时器，期间没有心跳消息则登出
-    Timer::Get().RunAfter(3 * 1000, std::bind(&CacheState::ConnLogOut, &(CacheState::Get()), ctx.ConnID));
+    std::shared_ptr<ConnectionState> conn_state(std::make_shared<ConnectionState>(ctx.ConnID, login_msg.head().deviceid()));
+    CacheState::Get().StoreConnIDState(ctx.ConnID, conn_state);
+    
+    // 设置心跳定时器，期间没有心跳消息则登出
+    uint32_t timer_id = Timer::Get().RunAfter(3 * 1000, std::bind(&CacheState::ConnLogOut, &(CacheState::Get()), ctx.ConnID));
+    conn_state->SetHeartTimerId(timer_id);
+
+    // 回复客户端登录成功
     SendAckMsg(message::Login, ctx.ConnID, 0, 0, "login ok");
 }
 

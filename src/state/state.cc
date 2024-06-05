@@ -87,11 +87,11 @@ void ConnectionState::SetReConnTimer()
         reconn_timer_id_ = 0;
     }
 
-    // 因为是没有心跳的情况下启动的心跳计时器，所以这里得重置心跳计时器的id
-    // 如果后续有不使用心跳计时器触发重连计时器的方法的话，再改进
+    // 因为是没有心跳的情况下启动的心跳计时器，此时心跳计时器已经触发完了，所以这里得重置心跳计时器的id
+    // 如果后续有不使用心跳计时器触发重连计时器的方法的话，再修改这块逻辑
     heart_timer_id_ = 0;
 
-    // 初始化断线重连定时器
+    // 初始化断线重连定时器，10秒内没有重连就清理资源
     reconn_timer_id_ = Timer::Get().RunAfter(10 * 1000, std::bind(&CacheState::ConnLogOut, &(CacheState::Get()), connid_));
 }
 

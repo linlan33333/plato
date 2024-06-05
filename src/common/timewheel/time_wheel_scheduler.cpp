@@ -29,8 +29,21 @@ void TimeWheelScheduler::Run() {
     // 这里得改进一下，比如每执行若干个时间轮刻度的定时任务后计算一下时间偏移量，然后矫正，后续改一下
     std::this_thread::sleep_for(std::chrono::milliseconds(timer_step_ms_));
 
-    // 对整个时间轮上锁
-    std::lock_guard<std::mutex> lock(mutex_);
+    // 对整个时间轮上锁，注意这里有个坑点：执行定时函数时会先拿到锁，如果定时函数里面会执行创建定时任务的话，
+    // 就会死锁，因为创建定时任务需要拿到锁，但这里锁已经被抢走了，所以定时任务创建不了，定时函数执行不下去，死锁！！！
+    // 所以改进方法是缩小锁粒度，这个锁只是为了确保线程拿到当前刻度的所有定时任务时没有其他线程在同时往当前刻度中删除/插入任务
+    // 所以执行当前刻度的定时任务时是不需要锁的，因此减小持有锁范围——只在取定时任务期间上锁
+    // std::lock_guard<std::mutex> lock(mutex_);
+    // if (stop_) {
+    //   break;
+    // }
+
+    // // 最小刻度的时间轮指针得往后移动了
+    // TimeWheelPtr least_time_wheel = GetLeastTimeWheel();
+    // least_time_wheel->Increase();
+    // // 拿到当前时间轮格子下的所有任务（任务都被封装成了Timer）
+    // std::list<TimerPtr> slot = std::move(least_time_wheel->GetAndClearCurrentSlot());
+
     if (stop_) {
       break;
     }
@@ -38,8 +51,12 @@ void TimeWheelScheduler::Run() {
     // 最小刻度的时间轮指针得往后移动了
     TimeWheelPtr least_time_wheel = GetLeastTimeWheel();
     least_time_wheel->Increase();
+
+    mutex_.lock();
     // 拿到当前时间轮格子下的所有任务（任务都被封装成了Timer）
     std::list<TimerPtr> slot = std::move(least_time_wheel->GetAndClearCurrentSlot());
+    mutex_.unlock();
+
     for (const TimerPtr& timer : slot) {
       auto it = cancel_timer_ids_.find(timer->id());
       if (it != cancel_timer_ids_.end()) {
