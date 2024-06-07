@@ -5,8 +5,7 @@
 #include <spdlog/spdlog.h>
 
 ConnectionState::ConnectionState(uint64_t connid, uint32_t did)
-    : connid_(connid)
-    , did_(did)
+    : connid_(connid), did_(did)
 {
 }
 
@@ -30,6 +29,16 @@ uint64_t ConnectionState::GetDeviceId()
     return did_;
 }
 
+void ConnectionState::SetMaxClientId(uint64_t client_id)
+{
+    max_client_id_ = client_id;
+}
+
+uint64_t ConnectionState::GetMaxClientId()
+{
+    return max_client_id_;
+}
+
 void ConnectionState::SetHeartTimerId(uint32_t timerid)
 {
     heart_timer_id_ = timerid;
@@ -51,10 +60,12 @@ void ConnectionState::ResetHeartBeatTimer()
         heart_timer_id_ = 0;
     }
 
+    std::cout << "已重置心跳计时器" << std::endl;
+
     // 设置心跳定时器，五秒后没有心跳就启动断线重连计时器
     // 断线重连有两种情况：一是客户端主动断开，这可能是运营商搞的鬼
     // 其次是客户端不知不觉断开，这可能是网络环境较差等情况
-    heart_timer_id_ = Timer::Get().RunAfter(5 * 1000, std::bind(&ConnectionState::SetReConnTimer, this));
+    heart_timer_id_ = Timer::Get().RunAfter(5 * 1000, std::bind(&ConnectionState::ResetReConnTimer, this));
 }
 
 void ConnectionState::DeleteHeartBeatTimer()
@@ -77,7 +88,7 @@ uint32_t ConnectionState::GetReConnTimerId()
     return reconn_timer_id_;
 }
 
-void ConnectionState::SetReConnTimer()
+void ConnectionState::ResetReConnTimer()
 {
     std::lock_guard<std::mutex> lck(mtx_);
 
@@ -90,6 +101,8 @@ void ConnectionState::SetReConnTimer()
     // 因为是没有心跳的情况下启动的心跳计时器，此时心跳计时器已经触发完了，所以这里得重置心跳计时器的id
     // 如果后续有不使用心跳计时器触发重连计时器的方法的话，再修改这块逻辑
     heart_timer_id_ = 0;
+
+    std::cout << "已启动断线重连定时器" << std::endl;
 
     // 初始化断线重连定时器，10秒内没有重连就清理资源
     reconn_timer_id_ = Timer::Get().RunAfter(10 * 1000, std::bind(&CacheState::ConnLogOut, &(CacheState::Get()), connid_));
@@ -113,6 +126,17 @@ void ConnectionState::SetMsgTimerId(uint32_t timerid)
 uint32_t ConnectionState::GetMsgTimerId()
 {
     return msg_timer_id_;
+}
+
+void ConnectionState::DeleteMsgTimer()
+{
+    std::lock_guard<std::mutex> lck(mtx_);
+
+    if (msg_timer_id_ != 0) 
+    {
+        Timer::Get().Cancel(msg_timer_id_);
+        msg_timer_id_ = 0;
+    }
 }
 
 void ConnectionState::Close()
@@ -143,4 +167,37 @@ void ConnectionState::Close()
 
     // 向gateway发送删除连接的信令
     GatewayCaller::Get().DelConn(connid_, "close connection");
+}
+
+bool ConnectionState::CheckUPMsg(uint64_t client_id)
+{
+    // 就为了锁一行代码去创建lock_guard太傻逼了，这里直接手动上锁
+    mtx_.lock();
+    bool res = (max_client_id_ + 1 == client_id);
+    mtx_.unlock();
+    return res;
+}
+
+void ConnectionState::AddMaxClientId()
+{
+    mtx_.lock();
+    max_client_id_++;
+    mtx_.unlock();
+}
+
+void ConnectionState::SetMsgId(uint64_t msg_id)
+{
+    msg_id_ = msg_id;
+}
+
+uint64_t ConnectionState::GetMsgId()
+{
+    return msg_id_;
+}
+
+void ConnectionState::AddMsgId()
+{
+    mtx_.lock();
+    msg_id_++;
+    mtx_.unlock();
 }

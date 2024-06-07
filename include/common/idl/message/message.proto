@@ -30,12 +30,14 @@ message UPMsgHead{
     string SessionId = 3;
  }
 
- message PushMsg{
-     uint64 MsgID   = 1;
-     uint64 SessionID = 2;
-     bytes  Content = 3;
- }
+message PushMsg{
+    uint64 MsgID   = 1;
+    uint64 SessionID = 2;
+    bytes Content = 3;
+}
+
 // ACK 消息
+// 不管是服务端回复客户端还是客户端回复服务端，都发这个格式
 message ACKMsg {
     uint32 Code = 1;
     string Msg = 2; 
