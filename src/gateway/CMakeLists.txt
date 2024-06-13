@@ -19,8 +19,6 @@ aux_source_directory(../common/utils UTILS_LIST)
 add_executable(Gateway ${SRC_LIST} ${RPC_CLIENT_LIST} ${RPC_SERVICE_LIST} ${CONFIG_LIST} ${GRPC_GATEWAY_LIST} 
                 ${THREAD_POOL_LIST} ${GRPC_STATE_LIST} ${TCP_LIST} ${UTILS_LIST})
 
-
-
 # 指定可执行文件链接时需要依赖的动态库文件，最后那三个得主目录的cmake文件引入common.cmake才能这么写
 target_link_libraries(Gateway muduo_net muduo_base pthread zookeeper_mt yaml-cpp
 ${_REFLECTION}  

@@ -36,4 +36,5 @@ include_directories(${PROJECT_SOURCE_DIR}/include/common)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 # cmake的用法就是从顶级目录开始往下去找子目录的cmake文件，逐层确定最终编译的文件范围
-add_subdirectory(src)
+# add_subdirectory(src)
+add_subdirectory(test)

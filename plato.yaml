@@ -6,7 +6,7 @@ discovery:
 cache:
   redis:
     endpoints:
-    - 127.0.0.1:6379
+    - 127.0.0.1:7002
 ip_conf:
   service_path: /plato/ip_dispatcher
 prpc:

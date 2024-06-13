@@ -1,6 +1,7 @@
 #pragma once
 
 #include "grpc/gateway/cmdcontext.h"
+#include "generateid.h"
 #include <muduo/net/TcpServer.h>
 #include <muduo/net/EventLoop.h>
 #include <map>
@@ -36,4 +37,6 @@ private:
     // key是muduo::net::TcpConnection的地址，value是muduo::net::TcpConnection的指针
     std::map<unsigned long long, muduo::net::TcpConnection*> connid_map_;
     std::shared_mutex connid_map_mtx_;
+
+    GenerateId connid_generator_;
 };
