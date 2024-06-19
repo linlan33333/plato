@@ -18,21 +18,24 @@ public:
     /// @return 
     static RedisCli& Get();
 
-    /// @brief 获取字节数据
-    /// @param key 
-    /// @return 
-    std::vector<char> GetBytes(const std::string &key);
+    /// @brief 初始化redis集群
+    void Init();
 
     /// @brief 获取UInt64数据
     /// @param key 
     /// @return 
     uint64_t GetUInt64(const std::string &key);
 
-    /// @brief 设置字节数据
+    /// @brief 设置字节数据，主要是用于存储protobuf序列化后的二进制数据
     /// @param key 
     /// @param value 
     /// @param ttl 
-    void SetBytes(const std::string &key, const std::vector<char> &value, std::chrono::seconds ttl);
+    void SetBytes(const std::string &key, const std::string &value, std::chrono::seconds ttl);
+
+    /// @brief 获取字节数据，主要是获取存储在redis中的protobuf序列化后的二进制数据
+    /// @param key 
+    /// @return 返回string类型的字符串就行，它可以存储二进制数据
+    std::string GetBytes(const std::string &key);
 
     /// @brief 删除键，批量删除
     /// @param keys 
@@ -69,7 +72,7 @@ public:
     /// @return 
     std::string GetString(const std::string &key);
 
-    /// @brief 运行 Lua 脚本，模板参数类型请填写key的类型、args的类型
+    /// @brief 运行 Lua 脚本，模板参数类型请填写key的类型、args的类型，注意只支持long long、void、bool、string这些类型
     /// @param name 
     /// @param keys 
     /// @param args 
@@ -96,7 +99,7 @@ public:
     void InitLuaScript();
 
 private:
-    RedisCli();
+    RedisCli() = default;
 
     RedisCli(const RedisCli&) = delete;
     RedisCli& operator= (const RedisCli&) = delete;
@@ -108,42 +111,3 @@ private:
     LuaScript lua_scripts_;
 };
 
-// // redis cache 类
-// class redisCache {
-// public:
-//     redisCache() = default;
-
-//     void MSet(const std::map<std::string, std::string> &keys) {
-//         rdb->mset(keys.begin(), keys.end());
-//     }
-
-//     std::map<std::string, std::string> MGet(const std::vector<std::string> &keys) {
-//         auto result = rdb->mget(keys.begin(), keys.end());
-//         std::map<std::string, std::string> resultMap;
-//         for (size_t i = 0; i < keys.size(); ++i) {
-//             if (result[i]) {
-//                 resultMap[keys[i]] = *result[i];
-//             }
-//         }
-//         return resultMap;
-//     }
-
-//     void MDel(const std::vector<std::string> &keys) {
-//         rdb->del(keys.begin(), keys.end());
-//     }
-// };
-
-// int main() {
-//     try {
-//         InitRedis();
-
-//         // 测试函数
-//         SetString("test_key", "test_value", std::chrono::seconds(60));
-//         std::cout << "Value of test_key: " << GetString("test_key") << std::endl;
-
-//     } catch (const Error &e) {
-//         std::cerr << "Redis error: " << e.what() << std::endl;
-//     }
-
-//     return 0;
-// }

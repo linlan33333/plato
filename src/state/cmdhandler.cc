@@ -60,13 +60,8 @@ void CmdHandler::LoginMsgHandler(CmdContext& ctx, message::MsgCmd& cmd)
     // 。。。。。。
     std::cout << "恭喜你登录成功" << std::endl;
 
-    // 存储该用户的连接状态
-    std::shared_ptr<ConnectionState> conn_state(std::make_shared<ConnectionState>(ctx.ConnID, login_msg.head().deviceid()));
-    CacheState::Get().StoreConnIDState(ctx.ConnID, conn_state);
-    
-    // 设置心跳定时器，期间没有心跳消息则登出
-    uint32_t timer_id = Timer::Get().RunAfter(3 * 1000, std::bind(&CacheState::ConnLogOut, &(CacheState::Get()), ctx.ConnID));
-    conn_state->SetHeartTimerId(timer_id);
+    // 这一步完成创建ConnectionState、存储该用户的连接状态、设置心跳定时器等操作
+    CacheState::Get().ConnLogin(login_msg.head().deviceid(), ctx.ConnID);
 
     // 回复客户端登录成功
     SendAckMsg(message::Login, ctx.ConnID, 0, 0, "login ok");
@@ -104,25 +99,14 @@ void CmdHandler::ReConnMsgHandler(CmdContext &ctx, message::MsgCmd &cmd)
 
     // 重连消息头中的connID才是上一次断开连接的connID
     uint64_t last_connid = msg.head().connid();
-    // 找到原来的ConnectionState
-    std::shared_ptr<ConnectionState> conn_state = CacheState::Get().GetConnIDState(last_connid);
-    if (conn_state != nullptr) 
+    // 删掉redis和router中老的connid信息，注册新的
+    if (CacheState::Get().ReConnection(last_connid, ctx.ConnID))
     {
-        // 先停止重连定时器，都已经触发重连定时器了，说明心跳定时器早执行完了
-        // 那心跳定时器咋不设置呢？因为客户端会发送心跳消息，当收到心跳消息时自动重置心跳定时器
-        // 那如果客户端发送重连信令后又断开连接了呢？这个情况下该怎么办？
-        // 所以个人认为这里就得重新设置一下心跳计时器，客户端不发心跳就清理资源
-        conn_state->DeleteReConnTimer();
-        conn_state->ResetHeartBeatTimer();
-        // 得给conn_state更换connid了
-        CacheState::Get().DeleteConnIDState(last_connid);
-        CacheState::Get().StoreConnIDState(ctx.ConnID, conn_state);
-
         SendAckMsg(message::ReConn, ctx.ConnID, 0, 0, "reconn ok");
         return;
     }
 
-    // 没找到这个状态，那就说明已经被清理了，重连失败，让客户端重新登录吧
+    // 调用失败，说明没找到老的connid对应的状态，那就说明已经超时被清理了，让客户端重新登录吧
     SendAckMsg(message::ReConn, ctx.ConnID, 0, 1, "reconn failed");
 }
 
@@ -136,52 +120,21 @@ void CmdHandler::UpMsgHandler(CmdContext &ctx, message::MsgCmd &cmd)
         return;
     }
 
-    // 先拿到ConnectionState对象
-    std::shared_ptr<ConnectionState> conn_state = CacheState::Get().GetConnIDState(ctx.ConnID);
-    if (conn_state != nullptr)
+    // 检查接收到的消息是否是连贯的，如果是那就交付业务服务器去做进一步处理
+    if (CacheState::Get().CompareAndIncrClientID(ctx.ConnID, up_msg.head().clientid()))
     {
-        // 接收到的消息是连贯的，交付业务服务器去做进一步处理
-        if (conn_state->CheckUPMsg(up_msg.head().clientid()))
-        {
-            // 调用下游业务层rpc，只有当rpc回复成功后才能更新max_clientID
-			// 这里先假设成功
-            // 。。。。。。
-            conn_state->AddMaxClientId();
+        std::cout << "收到的消息是：" << up_msg.upmsgbody() << std::endl;
+        // 客户端发上行消息过来我就回上行消息过去，要是CmdType设为ACK客户端就分不清这是哪个信令的ACK了
+        SendAckMsg(message::CmdType::UP, ctx.ConnID, up_msg.head().clientid(), 0, "recieve msg ok");
 
-            std::cout << "收到的消息是：" << up_msg.upmsgbody() << std::endl;
-            // 客户端发上行消息过来我就回上行消息过去，要是CmdType设为ACK客户端就分不清这是哪个信令的ACK了
-            SendAckMsg(message::CmdType::UP, ctx.ConnID, up_msg.head().clientid(), 0, "recieve msg ok");
-
-            ///////////////////////////// 以下是模拟给用户推送消息，让用户回复ack，来测试下行消息处理器好不好使
-            message::PushMsg push_msg;
-            push_msg.set_msgid(10086);
-            push_msg.set_sessionid(10086);
-            push_msg.set_content(up_msg.upmsgbody());
-            std::string push_msg_str;
-            if (!push_msg.SerializeToString(&push_msg_str))
-            {
-                spdlog::warn("CmdHandler.cc::UpMsgHandler: PushMsg serialize to string error!");
-                return;
-            }
-
-            // 让消息id自增
-            conn_state->AddMsgId();
-            
-            // 和之前说的一样，只保留最新推送给客户端的消息定时器，老的推送消息的定时器都取消
-            conn_state->DeleteMsgTimer();
-            // 创建新的消息的定时器，无限重传
-            // 该方法内部会将消息先推送给客户端，所以不需要调用SendMsg了，直接调用它即可
-            RePush(ctx.ConnID, push_msg_str);
-        }
-        // 接收的消息不连贯怎么办，这里先按下不表
-        else 
-        {
-            spdlog::info("CmdHandler.cc::UpMsgHandler: The received message is not coherent");
-        }
+        ///////////////////////////// 以下是模拟给用户推送消息，让用户回复ack，来测试下行消息处理器好不好使
+        // 将push_msg发送给用户，这个sessionid和msgid瞎填的
+        PushMsg(ctx.ConnID, 0, 1, up_msg.upmsgbody());
     }
-    else
+    // 接收的消息不连贯怎么办，这里先按下不表
+    else 
     {
-        spdlog::warn("CmdHandler.cc::UpMsgHandler: Can\'t find ConnectionState object!");
+        spdlog::info("CmdHandler.cc::UpMsgHandler: The received message is not coherent");
     }
 }
 
@@ -195,18 +148,10 @@ void CmdHandler::AckMsgHandler(CmdContext &ctx, message::MsgCmd &cmd)
         return;
     }
 
-    std::shared_ptr<ConnectionState> conn_state = CacheState::Get().GetConnIDState(ctx.ConnID);
-    if (conn_state != nullptr) 
-    {
-        // 客户端回复了ACK，就取消掉该消息的定时器，这里只做测试用，逻辑简化一下
-        // 注意客户端是可以合并确认的，只需要发送最后一次服务器推送的消息的ACK即可，这样服务器就知道客户端
-        // 收到的消息到哪一条了
-        conn_state->DeleteMsgTimer();
-    }
-    else 
-    {
-        spdlog::warn("CmdHandler.cc::AckMsgHandler: Can\'t find ConnectionState object!");
-    }
+    // 客户端回复了ACK，就取消掉该消息的定时器，这里只做测试用，逻辑简化一下
+    // 注意客户端是可以合并确认的，只需要发送最后一次服务器推送的消息的ACK即可，这样服务器就知道客户端
+    // 收到的消息到哪一条了
+    CacheState::Get().AckLastMsg(ack_msg.connid(), ack_msg.sessionid(), ack_msg.msgid());
 }
 
 void CmdHandler::SendAckMsg(message::CmdType cmd_type, uint64_t connid, uint64_t clientid, uint32_t code, std::string msg)
@@ -245,19 +190,60 @@ void CmdHandler::SendMsg(uint64_t connid, message::CmdType cmd_type, std::string
     GatewayCaller::Get().Push(connid, data);
 }
 
-// 这里需要完成发送消息和重设定时器两个步骤，然后递归地设置定时器任务为该函数，做到无限重发的效果
-void CmdHandler::RePush(uint64_t connid, std::string &msg_data)
+void CmdHandler::PushMsg(uint64_t connid, uint64_t sessionid, uint64_t msgid, const std::string &content)
 {
+    message::PushMsg push_msg;
+    push_msg.set_msgid(msgid);
+    push_msg.set_sessionid(sessionid);
+    push_msg.set_content(content);
+
+    std::string data;
+    if (!push_msg.SerializeToString(&data))
+    {
+        spdlog::warn("CmdHandler.cc::PushMsg: Serialize to PushMsg error!");
+        return;
+    }
+
+    // 发送下行消息给该用户
+    SendMsg(connid, message::Push, data);
+    // 将消息存储到redis飞行队列中，不管该消息最终能不能送达到用户手上，都需要更新飞行队列中的最新消息
+    // 原本以为飞行队列中的新消息是IM server挂上去的，现在看样子不是，是state server在这里挂上去的，如果
+    // 最新消息没来得及挂上去state server挂了，那该消息就丢失了，只能等state server恢复后用户发现msgid
+    // 跳变自己主动拉取了
+    CacheState::Get().AppendLastMsg(connid, push_msg, data);
+}
+
+// 这里需要完成获取最新消息、发送消息和重设定时器三个步骤，然后递归地设置定时器任务为该函数，做到无限重发的效果
+// 这个函数的逻辑妙就妙在每次执行时都会获取最新的没推送的消息并发送，确保不会重发过时的消息。
+void CmdHandler::RePush(uint64_t connid)
+{
+    // 去redis中的飞行队列拿最新的消息
+    std::unique_ptr<message::PushMsg> push_msg_ptr = CacheState::Get().GetLastMsg(connid);
+    // 消息已经发送完成，那么就没有最新消息，这里也就是为空
+    if (push_msg_ptr == nullptr) 
+    {
+        return;
+    }
+
+    std::string msg_data;
+    if (!push_msg_ptr->SerializeToString(&msg_data))
+    {
+        spdlog::warn("CmdHandler.cc::RePush: Serialize to PushMsg error!");
+        return;
+    }
+    // 消息发送出去
     SendMsg(connid, message::CmdType::Push, msg_data);
 
     // 每次自己重新去查找有无该连接对象，防止该连接对象都没了还重发个啥
     std::shared_ptr<ConnectionState> conn_state = CacheState::Get().GetConnIDState(connid);
     if (conn_state != nullptr)
     {
-        // 这里不需要判断该定时器对应的消息是不是最新的，因为不是最新的话UpMsgHandler函数里面就已经取消掉该定时器了
-        // 所以只要是消息重发的定时器那一定是最新的消息
-        uint32_t msg_timer_id = Timer::Get().RunAfter(100, std::bind(&CmdHandler::RePush, &(CmdHandler::Get()), connid, msg_data));
-        conn_state->SetMsgTimerId(msg_timer_id);
+        // 设置消息重发定时器，到点时会自动重新执行该函数，拉取最新消息，重设定时器
+        // 你可能会有疑问：如果上一次设置的重发定时器对应的消息一直没收到确认，现在IM server又给飞行队列放入了新的消息
+        // 现在定时器到点了执行该逻辑会发生什么？由于重新执行该逻辑，拉取了最新的消息，在这次设置定时器之前上一次的消息
+        // 还是没确认，那么ResetMsgTimer会修改定时器的msg_timer_lock为本次新消息的元信息，上一次消息的确认即便到了也不会
+        // 影响本次最新消息的定时器，如果这次设置定时器之前上一次的消息确认了，那皆大欢喜，这次设置的定时器就是最新消息的定时器
+        conn_state->ResetMsgTimer(push_msg_ptr->sessionid(), push_msg_ptr->msgid());
     }
     else
     {

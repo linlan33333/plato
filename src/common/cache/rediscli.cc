@@ -7,14 +7,15 @@ RedisCli &RedisCli::Get()
     return redis_cli;
 }
 
-RedisCli::RedisCli() 
+void RedisCli::Init()
 {
     // redis集群的某个主节点信息，就取第一个
     sw::redis::ConnectionOptions conn_ops;
     std::string endpoint = CacheConfig::Get().GetCacheRedisEndpointList()[0];
     auto pos = endpoint.find(':');
     std::string host = endpoint.substr(0, pos);
-    std::string port = endpoint.substr(pos + 1, endpoint.size() - pos);
+    // 剩余子串的长度别算了，直接梭到尾就行
+    std::string port = endpoint.substr(pos + 1, endpoint.size());
     conn_ops.host = host;
     conn_ops.port = std::stoi(port);
 
@@ -29,33 +30,29 @@ RedisCli::RedisCli()
     InitLuaScript();
 }
 
-std::vector<char> RedisCli::GetBytes(const std::string &key)
+std::string RedisCli::GetBytes(const std::string &key)
 {
-    auto val = rdb_->get(key);
-    if (val) {
-        return std::vector<char>(val->begin(), val->end());
-    } else {
-        spdlog::warn("Redis GetBytes: key not found");
-    }
-
-    return std::vector<char> ();
+    return GetString(key);
 }
 
 uint64_t RedisCli::GetUInt64(const std::string &key)
 {
     auto val = rdb_->get(key);
-    if (val) {
+    if (val) 
+    {
         return std::stoull(*val);
-    } else {
+    } 
+    else 
+    {
         spdlog::warn("Redis GetUInt64: key not found");
     }
 
     return 0;
 }
 
-void RedisCli::SetBytes(const std::string &key, const std::vector<char> &value, std::chrono::seconds ttl)
+void RedisCli::SetBytes(const std::string &key, const std::string &value, std::chrono::seconds ttl)
 {
-    rdb_->set(key, std::string(value.begin(), value.end()), std::chrono::milliseconds(ttl));
+    rdb_->set(key, value, std::chrono::milliseconds(ttl));
 }
 
 void RedisCli::Del(const std::vector<std::string> &keys)
@@ -94,11 +91,16 @@ void RedisCli::SetString(const std::string &key, const std::string &value, std::
 std::string RedisCli::GetString(const std::string &key)
 {
     auto val = rdb_->get(key);
-    if (val) {
+    if (val) 
+    {
         return *val;
-    } else {
-        throw std::runtime_error("Redis GetString: key not found");
+    } 
+    else 
+    {
+        spdlog::info("Redis GetString: key {} not found", key);
     }
+
+    return "";
 }
 
 std::vector<std::string> RedisCli::GetKeys(std::string &pattern)

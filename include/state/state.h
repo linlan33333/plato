@@ -20,11 +20,9 @@ public:
 
     void SetMaxClientId(uint64_t client_id);
     uint64_t GetMaxClientId();
-    /// @brief 让max_client_id自增
-    void AddMaxClientId();
 
 
-    void SetMsgId(uint64_t msg_id);
+    void SetMsgId(uint64_t msgid);
     uint64_t GetMsgId();
     /// @brief 让msg_id自增
     void AddMsgId();
@@ -32,7 +30,7 @@ public:
 
     void SetHeartTimerId(uint32_t timerid);
     uint32_t GetHeartTimerId();
-    /// @brief 重设心跳计时器
+    /// @brief 重设心跳计时器，如果没有就创建心跳定时器
     void ResetHeartBeatTimer();
     /// @brief 删除心跳计时器
     void DeleteHeartBeatTimer();
@@ -46,20 +44,33 @@ public:
     void DeleteReConnTimer();
 
 
-    void SetMsgTimerId(uint32_t timerid);
     uint32_t GetMsgTimerId();
-    void DeleteMsgTimer();
+    /// @brief 重设消息定时器，同时还需要存储一些元数据才行
+    void ResetMsgTimer(uint64_t sessionid, uint64_t msgid);
+    /// @brief 删除消息定时器，得先验证传入的元信息锁
+    /// @param msg_timer_lock 
+    void DeleteMsgTimer(std::string& msg_timer_lock);
 
+
+    /// @brief 该接口不应当单独使用，设置msg_timer_lock_和创建定时器应当是原子操作，不应该分开调用
+    /// @param sessionid 
+    /// @param msgid 
+    void SetMsgTimerLock(uint64_t sessionid, uint64_t msgid);
+    std::string GetMsgTimerLock();
+
+    /// @brief 设置push_msg元信息锁msg_timer_lock_，创建重发定时器，将push_msg_str存储到redis飞行队列中，这三步操作是原子性操作
+    /// @param last_msg_key 
+    /// @param sessionid 
+    /// @param msgid 
+    /// @param push_msg_str 
+    void AppendMsg(std::string last_msg_key, uint64_t sessionid, uint64_t msgid, std::string& push_msg_str);
+    /// @brief 检查当前ACK消息是不是最新消息的ACK消息，是的话就删除定时器，删除飞行队列中的消息，这两步是原子操作
+    /// @param sessionid 
+    /// @param msgid 
+    void AckLastMsg(uint64_t sessionid, uint64_t msgid);
 
     /// @brief 销毁该连接状态，停掉所有定时器，处理后事
     void Close();
-
-    /// @brief 检查客户端发来的消息的id是否连贯，也就是确保上行消息可靠性
-    /// @param client_id 
-    /// @return 
-    bool CheckUPMsg(uint64_t client_id);
-
-    
 
 private:
     // 同一个用户的状态的变更得是串行的，想调用接口改变状态，先抢这把锁
@@ -84,6 +95,9 @@ private:
     // 重连计时器的id，等于0标识没有设置该定时器，记得删除定时器的时候把它改为0
     uint32_t reconn_timer_id_ = 0;
 
-    // 发送上行消息后的定时器id，等于0标识没有设置该定时器，记得删除定时器的时候把它改为0
+    // 发送上行消息后的定时器id，只有最新的消息有定时器，等于0标识没有设置该定时器，记得删除定时器的时候把它改为0
     uint32_t msg_timer_id_ = 0;
+
+    // 最新的消息的元信息锁，防止老旧消息的ACK消息把最新消息的定时器给销毁了
+    std::string msg_timer_lock_;
 };

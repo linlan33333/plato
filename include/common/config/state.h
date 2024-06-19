@@ -18,6 +18,11 @@ public:
     /// @return 
     uint32_t GetThreadNumForWorkPool();
 
+    /// @brief 获取该state server存储connid的set集合名称的范围，这里将set集合视为逻辑上的登录槽
+    // 因此它叫获取登录槽范围
+    /// @return 
+    std::pair<int, int> GetStateServerLoginSlotRange();
+
 private:
     StateServerConfig() = default;
 

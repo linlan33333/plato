@@ -1,5 +1,6 @@
 #include "state/rpc/service/service.h"
 #include "config/conf.h"
+#include "cache.h"
 #include "timer.h"
 #include <unistd.h>
 
@@ -42,6 +43,9 @@ int main(int argc, char* argv[])
 
     // 初始化定时器
     Timer::Get().Init();
+
+    // 启动远程状态机组件，也就是和redis集群建立连接，恢复状态
+    CacheState::Get().Init();
 
     StateRpcService service;
     service.Start();
