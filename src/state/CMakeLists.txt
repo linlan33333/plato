@@ -15,10 +15,11 @@ aux_source_directory(../common/threadpool THREAD_POOL_LIST)
 aux_source_directory(../common/timewheel TIME_WHEEL_LIST)
 aux_source_directory(../common/idl/message IDL_MESSAGE_LIST)
 aux_source_directory(../common/cache CACHE_LIST)
+aux_source_directory(../common/router ROUTER_LIST)
 
 # 设置生成的可执行文件的名称
 add_executable(State ${SRC_LIST} ${RPC_CLIENT_LIST} ${RPC_SERVICE_LIST} ${CONFIG_LIST} ${GRPC_STATE_LIST} 
-        ${THREAD_POOL_LIST} ${GRPC_GATEWAY_LIST} ${IDL_LIST} ${TIME_WHEEL_LIST} ${IDL_MESSAGE_LIST} ${CACHE_LIST})
+        ${THREAD_POOL_LIST} ${GRPC_GATEWAY_LIST} ${IDL_LIST} ${TIME_WHEEL_LIST} ${IDL_MESSAGE_LIST} ${CACHE_LIST} ${ROUTER_LIST})
 # 指定可执行文件链接时需要依赖的动态库文件
 # grpc++_reflection grpc grpc++ protobuf这几个库得从common.cmake文件中去引，不然报错，就是下面的${_REFLECTION}，${_GRPC_GRPCPP}，${_PROTOBUF_LIBPROTOBUF}
 target_link_libraries(State muduo_net muduo_base pthread zookeeper_mt yaml-cpp hiredis redis++

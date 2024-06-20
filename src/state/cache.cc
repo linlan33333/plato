@@ -3,6 +3,7 @@
 #include "cache/rediscli.h"
 #include "config/state.h"
 #include "cache/const.h"
+#include "router/table.h"
 #include "workpool.h"
 #include <spdlog/spdlog.h>
 
@@ -68,6 +69,10 @@ uint64_t CacheState::ConnLogOut(uint64_t connid)
     {
         // 这里面会向gateway发送断开连接的rpc请求
         state->Close();
+
+        // 调用router的接口去redis中删除该用户的登录信息
+        Router::Get().DelRecord(did);
+
         // 移除该连接对象的状态
         DeleteConnIDState(connid);
 
@@ -145,8 +150,9 @@ void CacheState::ConnLogin(uint64_t did, uint64_t connid)
     // 把connid信息存储到登录槽中
     RedisCli::Get().SADD(login_slot, did_connid_meta);
 
-    // 添加路由记录
-    // 。。。。。。。。。。
+    // 添加路由记录，将该用户的登录消息存到redis中，方便业务服务器反查该用户在哪台机器上
+    std::string endpoint = StateServerConfig::Get().GetIp() + ":" + std::to_string(StateServerConfig::Get().GetPort());
+    Router::Get().AddRecord(did, endpoint, connid);
 
     // TODO 上行消息中的 max_client_id 初始化，现在相当于生命周期在conn维度，后面重构sdk时会调整到会话维度
 

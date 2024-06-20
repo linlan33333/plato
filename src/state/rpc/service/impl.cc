@@ -8,7 +8,11 @@
 
 grpc::Status StateServerRpcServiceImpl::CancelConn(grpc::ServerContext* context, const StateRequest* request, StateResponse *response)
 {
-    // 可能涉及到业务服务器等多个服务器的处理逻辑，暂时搁置，学完了再做
+    // 打印日志
+    spdlog::info("RPC server: Cancel connection! endpoint: {1}, connid: {2}, data: {3}", request->endpoint(), request->connid(), request->data());
+
+    // 去redis中删除掉该用户的登录信息
+    CacheState::Get().ConnLogOut(request->connid());
 
     // 返回RPC响应，只需设置好值就行，会自动帮我们将response发回去
     response->set_code(0);
