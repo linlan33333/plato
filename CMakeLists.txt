@@ -9,10 +9,11 @@ include(common.cmake)
 set(CMAKE_BUILD_TYPE "Debug")
 
 # 设置C++标准为C++17，common.cmake文件中也得设置一下，要改记得改一下common.cmake的
-# set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # 将-std=c++17之类的添加到编译选项
-add_compile_options(-std=c++17)
+add_compile_options(-std=c++20)
 # add_compile_options(-fsanitize=address)
 # add_compile_options(-fno-omit-frame-pointer)
 
@@ -36,5 +37,5 @@ include_directories(${PROJECT_SOURCE_DIR}/include/common)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 # cmake的用法就是从顶级目录开始往下去找子目录的cmake文件，逐层确定最终编译的文件范围
-add_subdirectory(src)
-# add_subdirectory(test)
+# add_subdirectory(src)
+add_subdirectory(test)

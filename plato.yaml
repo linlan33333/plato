@@ -7,6 +7,9 @@ cache:
   redis:
     endpoints:
     - 127.0.0.1:7002
+bizflow:
+  worksize: 64
+  flow_parallel_num: 64
 ip_conf:
   service_path: /plato/ip_dispatcher
 prpc:

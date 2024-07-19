@@ -1,7 +1,5 @@
 #include "config/cache.h"
 
-#include <iostream>
-
 CacheConfig &CacheConfig::Get()
 {
     static CacheConfig cache;

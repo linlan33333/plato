@@ -14,12 +14,12 @@ std::string GatewayConfig::GetIp()
 
 uint32_t GatewayConfig::GetPortForNetService()
 {
-    return Conf::GetConf()["gateway"]["tcp_server_port"].as<std::uint32_t>();
+    return Conf::GetConf()["gateway"]["tcp_server_port"].as<uint32_t>();
 }
 
 uint32_t GatewayConfig::GetPortForRPCService()
 {
-    return Conf::GetConf()["gateway"]["rpc_server_port"].as<std::uint32_t>();
+    return Conf::GetConf()["gateway"]["rpc_server_port"].as<uint32_t>();
 }
 
 std::string GatewayConfig::GetServiceName()
@@ -29,15 +29,15 @@ std::string GatewayConfig::GetServiceName()
 
 uint32_t GatewayConfig::GetThreadNumForRPCServer()
 {
-    return Conf::GetConf()["gateway"]["rpc_thread_num"].as<std::uint32_t>();
+    return Conf::GetConf()["gateway"]["rpc_thread_num"].as<uint32_t>();
 }
 
 uint32_t GatewayConfig::GetThreadNumForNetServer()
 {
-    return Conf::GetConf()["gateway"]["tcp_thread_num"].as<std::uint32_t>();
+    return Conf::GetConf()["gateway"]["tcp_thread_num"].as<uint32_t>();
 }
 
 uint32_t GatewayConfig::GetThreadNumForWorkPool()
 {
-    return Conf::GetConf()["gateway"]["workpool_thread_num"].as<std::uint32_t>();
+    return Conf::GetConf()["gateway"]["workpool_thread_num"].as<uint32_t>();
 }

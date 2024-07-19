@@ -19,6 +19,8 @@ public:
     static Router& Get();
 
     /// @brief 当用户登录时调用，向redis中添加该用户的登录信息，即该用户的连接在哪台state server中，connid是多少
+    /// 因此如果IM server推送消息过来，调用QueryRecord接口没找到该did所在的endpoint信息，就说明该用户离线，做离线
+    /// 消息的相关业务操作
     /// @param did
     /// @param endpoint 
     /// @param connid 

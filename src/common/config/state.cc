@@ -15,12 +15,12 @@ std::string StateServerConfig::GetIp()
 
 uint32_t StateServerConfig::GetPort()
 {
-    return Conf::GetConf()["state"]["server_port"].as<std::uint32_t>();
+    return Conf::GetConf()["state"]["server_port"].as<uint32_t>();
 }
 
 uint32_t StateServerConfig::GetThreadNumForWorkPool()
 {
-    return Conf::GetConf()["state"]["workpool_thread_num"].as<std::uint32_t>();
+    return Conf::GetConf()["state"]["workpool_thread_num"].as<uint32_t>();
 }
 
 std::pair<int, int> StateServerConfig::GetStateServerLoginSlotRange()
