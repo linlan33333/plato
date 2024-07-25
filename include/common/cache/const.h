@@ -21,4 +21,10 @@ namespace cache
 
     // 定义时间常量，redis中一些key的过期时间都设为一周，这么写是因为redis-plus-plus中的接口设置超时时间是std::chrono::seconds类型
     const std::chrono::seconds TTL7D = std::chrono::seconds(7 * 24 * 60 * 60);
+
+    const std::chrono::seconds TTL1D = std::chrono::seconds(24 * 60 * 60);
+
+    // 这个查询用户信息的key没有做slot切片存储操作，会不会导致大量用户存储到同一个redis示例上导致其内存紧张？
+    // 这里我还是做了切片操作，后续看看需不需要修改
+    const std::string UserDomainCacheKey = "userDomainCacheKey:{%lld}";
 }

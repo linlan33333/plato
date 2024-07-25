@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+// 编译的时候如果你搞不定protoc如何指定这两文件位置的相对路径，那就把这两文件放到这个文件夹下面编译
+// import "user_dto.proto";
+// import "base.proto";
+import "include/common/idl/domain/user/user_dto.proto";
+import "include/common/idl/base/base.proto";
+
+package UserDomain;
+
+// 对应service.go文件中的那三个RPC接口
+service User {
+    rpc QueryUsers(QueryUsersRequest) returns (QueryUsersResponse);
+    rpc CreateUsers(CreateUsersRequest) returns (CreateUsersResponse);
+    rpc UpdateUsers(UpdateUsersRequest) returns (UpdateUsersResponse);
+}
+
+// 看QueryUsersResponse得知，能够返回多个用户的数据，就意味着需要支持查询多个用户的数据
+message QueryUsersRequest{
+    // key是uid， QueryUserOption表示选项，可选项有很多，比如查询用户资料，查询device，查询权限等
+    // 使用map是为了支持批量查询多个用户的数据
+    // 个人认为需要单独设计一个字段指明查询的是哪种数据，比如查询用户资料，还是查询用户设置等等
+    map<uint64, QueryUserOption> opts = 1;
+}
+
+// 具体的查询选项都列在这，自己根据业务需求进行添加
+// 解释一下为什么要有这个查询选项：查询该用户的某些DTO实体数据时，不一定需要查询所有设备上的DTO数据，比如某个用户的头像更新了，
+// 用户在手机上更新头像之后，同时登录的其他端设备的头像也需要同步更新，所以就可能涉及查询该用户的在线设备去做进一步处理，而不是所有设备
+// 所以在查询时携带这个选型，从而指导领域层去存储层中查询时的查询范围。这个在storage/options.go文件中也能印证这个想法
+// 设备ID列表，是查询所有设备ID列表还是查询该用户当前活跃（在线的）设备ID列表请看传进去的bool值
+message QueryUserOption{
+    // 用户的设备列表，个人认为如果是查询用户所有在线设备的数据，那么在这里填写好在线设备的id列表，方便存储层查询
+    // 如果是查询所有设备的数据，那么没必要传入这个字段，存储层根据userID全查出来就完事了
+    repeated uint64 deviceIDList = 1;
+    // 是否查询所有设备的相关DTO数据
+    bool allDevice = 2;
+    // 是否查询所有在线的设备的相关DTO数据
+    bool activeDevice = 3;
+
+    // 查询哪个DTO
+    OptionMode mode = 4;
+}
+
+// 这里定义具体查询哪个DTO的选项字段，如果要查询多个DTO，那可能得修改一下
+message OptionMode {
+	bool Device = 1;
+	bool Setting = 2;
+	bool Information = 3;
+    bool Profile = 4;
+}
+
+// 可以看到，返回给用户的数据是以DTO为单位将数据返回，而不是说调用方指明我只要deviceDTO中的id和type这两个字段就行，
+// 其他字段我不要，直接将这两个字段的值返回给我就行
+message QueryUsersResponse{
+    // 这是存储开发时测试流量治理等操作时的RPC网络错误信息，不然开发新功能出现的RPC网络错误信息没法获取到
+    base.BaseResp base = 1;
+    // DTO是数据传输对象的缩写，表示业务需要的用户各种信息数据的聚合打包，比如用户的device数据、权限数据、基本信息数据等打包在一起
+    // 因为支持批量查询用户数据，所以得是map表，将批量要查询的用户数据聚合起来
+    // 和DAO不同，DAO是给存储层服务的，而DTO是给RPC业务服务的
+    map<uint64,.user.UserDTO>  users = 2;
+}
+
+message CreateUsersRequest{
+    repeated .user.UserDTO users = 1;
+}
+
+message CreateUsersResponse{
+    // 这是基础架构流量治理等操作的错误信息
+    base.BaseResp base = 1;
+    int32   code = 2;
+    string msg = 3;
+}
+
+message UpdateUsersRequest{
+    repeated .user.UserDTO users = 1;
+}
+
+message UpdateUsersResponse{
+    // 这是基础架构流量治理等操作的错误信息
+    base.BaseResp base = 1;
+    int32   code = 2;
+    string msg = 3;
+}

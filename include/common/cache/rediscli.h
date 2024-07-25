@@ -93,6 +93,16 @@ public:
     /// @return 
     std::vector<std::string> GetKeys(std::string &pattern);
 
+    /// @brief mget接口，获取传入的所有key对应的value
+    /// @param keys 
+    /// @return 
+    std::vector<std::string> Mget(std::vector<std::string>& keys);
+
+    /// @brief 集群环境中模拟mset命令批量插入数据，但是由于不同的key在不同的slot上，所以本质上还是一个一个地插入数据，后续看看怎么优化这个东西
+    /// @param kv_pairs 
+    /// @param ttl 
+    void Mset(std::vector<std::pair<std::string, std::string>>& kv_pairs, std::chrono::seconds ttl);
+
     /// @brief 集群中的所有实例都存储一遍lua脚本，不然执行lua脚本切换到其他redis实例时没有存储该lua脚本
     /// 就无法拿sha去指示redis执行该脚本
     /// @param name 

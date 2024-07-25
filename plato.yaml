@@ -51,5 +51,11 @@ user_domain:
   service_name: "plato.domain.user"
   service_addr: "127.0.0.1"
   service_port: 8903
+  workpool_thread_num: 4
   weight: 100
   db_dns: "user:password@tcp(127.0.0.1:3306)/database?charset=utf8mb4&parseTime=True&loc=Local"
+  db:
+    host: "tcp://127.0.0.1:3306"
+    user: "root"
+    password: "zly"
+    database: "user"

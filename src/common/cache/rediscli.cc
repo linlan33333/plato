@@ -1,5 +1,6 @@
 #include "cache/rediscli.h"
 #include "config/cache.h"
+#include "rediscli.h"
 
 RedisCli &RedisCli::Get()
 {
@@ -113,6 +114,22 @@ std::vector<std::string> RedisCli::GetKeys(std::string &pattern)
     });
 
     return res;
+}
+
+std::vector<std::string> RedisCli::Mget(std::vector<std::string> &keys)
+{
+    std::vector<std::string> res;
+    rdb_->mget(keys.begin(), keys.end(), std::back_inserter(res));
+
+    return res;
+}
+
+void RedisCli::Mset(std::vector<std::pair<std::string, std::string>> &kv_pairs, std::chrono::seconds ttl)
+{
+    for (auto& kv_pair : kv_pairs)
+    {
+        SetString(kv_pair.first, kv_pair.second, ttl);
+    }
 }
 
 void RedisCli::InitLuaScript()

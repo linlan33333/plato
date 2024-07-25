@@ -13,7 +13,7 @@ public:
 
 private:
     // srpc服务器对象
-    grpc::ServerBuilder builder;
+    grpc::ServerBuilder builder_;
 
     StateServerRpcServiceImpl state_server_service_impl_;
 

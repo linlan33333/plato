@@ -4,9 +4,9 @@
 StateRpcService::StateRpcService()
 {
     std::string addr = StateServerConfig::Get().GetIp() + ":" + std::to_string(StateServerConfig::Get().GetPort());
-    builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
-    builder.RegisterService(&state_server_service_impl_);
-    server_ = builder.BuildAndStart();
+    builder_.AddListeningPort(addr, grpc::InsecureServerCredentials());
+    builder_.RegisterService(&state_server_service_impl_);
+    server_ = builder_.BuildAndStart();
 }
 
 void StateRpcService::Start()

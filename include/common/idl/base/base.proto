@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+//protoc --go-grpc_out=. --go_out=. ./common/idl/base/base.proto
+package base;
+
+message BaseResp {
+    // Code和Msg是流量治理相关的
+    uint32 Code = 1;
+    string Msg = 2;
+    // 分布式链路跟踪会使用
+    string LogID = 3;
+}

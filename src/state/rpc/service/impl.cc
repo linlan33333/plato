@@ -5,6 +5,7 @@
 #include "cmdhandler.h"
 #include "grpc/state/cmdcontext.h"
 #include <spdlog/spdlog.h>
+#include "impl.h"
 
 grpc::Status StateServerRpcServiceImpl::CancelConn(grpc::ServerContext* context, const StateRequest* request, StateResponse *response)
 {
