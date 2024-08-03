@@ -81,30 +81,28 @@ std::map<uint64_t, user::UserDTO> Storage::QueryUsers(std::vector<std::pair<uint
         res[user_id] = user_dto;
         miss_user_dto.emplace_back(std::make_pair(user_id, std::move(user_dto)));
     }
-    //////////////////////////////////////////////////// 将数据存到redis缓存中，这件事异步去做
-    WorkPool::Get().Push([miss_user_dto, this] () {
-        // 待会扔到redis缓存中
-        std::vector<std::pair<std::string, std::string>> kv_pairs;
+    //////////////////////////////////////////////////// 将数据存到redis缓存中，这件事得同步去做，因为上的分布式锁还得等着解开呢
+    //////////////////////////////////////////////////// 没有对缓存穿透情况做对应措施，后续需要修改
+    std::vector<std::pair<std::string, std::string>> kv_pairs;
 
-        for (int i = 0; i < miss_user_dto.size(); i++) 
+    for (int i = 0; i < miss_user_dto.size(); i++) 
+    {
+        std::string user_dto_str;
+        // 将UserDTO序列化后再存到redis中
+        if (!miss_user_dto[i].second.SerializeToString(&user_dto_str))
         {
-            std::string user_dto_str;
-            // 将UserDTO序列化后再存到redis中
-            if (!miss_user_dto[i].second.SerializeToString(&user_dto_str))
-            {
-                spdlog::warn("Storage.cc::QueryUsers: Serialize to string error!");
-                continue;
-            }
-
-            // 存储的key
-            char key[100];
-            sprintf(key, cache::UserDomainCacheKey.c_str(), miss_user_dto[i].first);
-
-            kv_pairs.emplace_back(std::make_pair(std::move(key), std::move(user_dto_str)));
+            spdlog::warn("Storage.cc::QueryUsers: Serialize to string error!");
+            continue;
         }
 
-        cache_manager_.Mset(kv_pairs, cache::TTL1D);
-    });
+        // 存储的key
+        char key[100];
+        sprintf(key, cache::UserDomainCacheKey.c_str(), miss_user_dto[i].first);
+
+        kv_pairs.emplace_back(std::make_pair(std::move(key), std::move(user_dto_str)));
+    }
+
+    cache_manager_.Mset(kv_pairs, cache::TTL1D);
 
     // 这里应当根据业务需要拿到需要查询的DTO放到UserDTO中
     for (int i = 0; i < options.size(); i++)
@@ -134,6 +132,7 @@ bool Storage::CreateUsers(std::vector<user::UserDTO>& user_dto_list)
     }
 
     // TODO: 这里并不是批量创建多个用户，本质上还是一个个用户创建，一定要优化性能改成批量创建
+    // TODO: 写操作得加分布式锁，这里并没有加，所以后续得修改
     bool res = user_model_.Create(user_dao_list);
     if (!res)
     {
@@ -178,6 +177,9 @@ bool Storage::UpdateUsers(std::vector<user::UserDTO> &user_dto_list)
 
     // 删除缓存，旁路模式保证缓存数据一致性
     cache_manager_.Mdel(keys);
+
+    // 修改个人信息后，应当作为特殊消息发送给所有联系人，让好友终端及时修改该用户的个人信息如昵称、头像、个性签名、所在地等数据
+    // TODO: 将修改后的个人信息作为特殊消息发送给所有联系人
 
     return true;
 }

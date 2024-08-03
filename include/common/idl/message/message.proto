@@ -9,6 +9,20 @@ enum CmdType { //枚举消息类型
     ACK = 3;
     UP = 4; // 上行消息
     Push = 5; // 下行 推送消息
+    PushBatch = 6;	//  下行 推送超大群聊的批量信息，需要采用session绑定的方式
+    ProtocolUpgrade = 7;    // 超大群聊协议降级的消息
+    ProtocolDowngrade = 8;  // 超大群聊协议升级的消息
+}
+
+// 会话的类型，客户端发消息时就能知道该会话是不是超大群聊啥的，提前设置好相应信息
+// 因为群聊类型不同对应的消息分发方式也不同，不要让领域层再去查一下该会话是不是超大群聊啥的，
+// 浪费时间增加网络请求延迟。但这个东西放这会暴露领域层的信息，而且耦合性强
+enum SessionType {
+    SINGLE = 0;     // 单聊
+    GROUP = 1;      // 群聊
+    SUPER = 2;      // 超大群聊
+    LIVE = 3;       // 直播
+    CHANNEL = 4;    // 频道
 }
 
 // 顶层cmd pb结构
@@ -21,19 +35,34 @@ message MsgCmd{
 message UPMsg{
     UPMsgHead Head = 1;
     bytes UPMsgBody = 2;
- }
+}
  
- // 上行消息头 pb结构
-message UPMsgHead{
+// 上行消息头 pb结构
+message UPMsgHead {
     uint64 ClientID = 1;
     uint64 ConnID = 2;
     string SessionId = 3;
- }
+    SessionType Type = 4;   // 新增一个会话类型的字段，客户端完全可以提前写好相关数据
+    // 为什么要添加一个发送者信息的字段，消息发送时如果用户发送的是群聊消息，
+    // 那么群聊中肯定有些人不是该用户的好友，因此该消息需要携带用户的个人信息如头像昵称，
+    // 方便对方终端软件展示。既然这样，不如用户发送消息时就携带该用户的个人信息如头像昵称，
+    // 这样就避免该消息推送给这些非好友用户时，writer server还得去查一下发送者的个人信息，
+    // 能省的网络请求尽量省下来。不然在超大群聊中消息发送速度那么快，
+    // 那writer server频繁查询消息发送者的个人信息岂不是给用户域添堵吗？
+    SenderInfo Sender = 5;  
+}
 
-message PushMsg{
+message PushMsg {
     uint64 MsgID   = 1;
     uint64 SessionID = 2;
     bytes Content = 3;
+}
+
+// 领域层是有可能发过来一批数据的，特别是万人群聊的消息，基本上是一批批的
+// 所以这里添加一个这样的批量消息，同时state server还得添加一个对应的处理逻辑handler
+message PushMultiMsg {
+	uint64 SessionID = 1;
+    map<uint64, bytes> content = 2;
 }
 
 // ACK 消息
@@ -77,4 +106,10 @@ message ReConnMsgHead {
 message ReConnMsg {
     ReConnMsgHead Head = 1;
     bytes ReConnMsgBody = 2;
+}
+
+// 定义一些发送者的信息字段在这里
+message SenderInfo {
+    string nickname = 1;
+    string avatar = 2;
 }

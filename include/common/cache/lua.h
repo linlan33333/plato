@@ -7,7 +7,8 @@
 // 所有lua脚本的名字放到这里
 enum class LuaScriptName
 {
-    LuaCompareAndIncrClientID
+    LuaCompareAndIncrClientID,
+    LuaGetSessionMessageID          // 获取某个会话中的最新可分配的messageID
 };
 
 // 把所有lua脚本都集中到这个类中

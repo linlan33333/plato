@@ -10,5 +10,6 @@ namespace Domain
         const int CREATEUSERERROR = 2;
         const int QUERYUSERERROR = 3;
         const int UPDATEUSERERROR = 4;
+        const int UPLOADMESSAGEERROR = 5;   // 指IM server上传消息到writer server后，writer server处理消息时出错，可能会造成消息遗失
     }
 }

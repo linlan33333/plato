@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+// 编译的时候如果你搞不定protoc如何指定这两文件位置的相对路径，那就把这两文件放到这个文件夹下面编译
+import "message_dto.proto";
+import "base.proto";
+import "message.proto";
+// import "include/common/idl/domain/message/message_dto.proto";
+// import "include/common/idl/base/base.proto";
+// import "include/common/idl/message/message.proto";
+
+package MessageDomain;
+
+service MessageWriter {
+    rpc PushMessage(PushMessageRequest) returns (PushMessageResponse);
+}
+
+message PushMessageRequest {
+    // 为什么消息不能一批批发送过来，因为每条消息都需要告诉客户端有没有发送成功
+    // 要是传一批消息过来，其中某条消息发送失败了，不好告诉客户端是哪条消息发送失败
+    uint64 sessionID = 1;
+
+    .message.SessionType type = 2;
+
+    .message.MessageDTO message = 3;
+}
+
+message PushMessageResponse {
+    base.BaseResp base = 1;
+    int32   code = 2;
+    string msg = 3;
+}

@@ -59,3 +59,10 @@ user_domain:
     user: "root"
     password: "zly"
     database: "user"
+message_domain:
+  writer:
+    service_name: "plato.domain.message.writer"
+    service_addr: "127.0.0.1"
+    service_port: 8904
+    protocol_downgrade_threshold: 1000
+    super_session_push_interval: 800
