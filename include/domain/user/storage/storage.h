@@ -30,7 +30,7 @@ public:
     bool UpdateUsers(std::vector<user::UserDTO>& user_dto_list);
 
 private:
-    Storage();
+    Storage() = default;
     Storage(const Storage&) = delete;
     Storage& operator=(const Storage&) = delete;
 

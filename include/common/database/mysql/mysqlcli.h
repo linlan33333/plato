@@ -1,11 +1,11 @@
 #pragma once
 
-#include <mysql_driver.h>
-#include <mysql_connection.h>
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
+#include <mysql-cppconn/jdbc/mysql_driver.h>
+#include <mysql-cppconn/jdbc/mysql_connection.h>
+#include <mysql-cppconn/jdbc/cppconn/driver.h>
+#include <mysql-cppconn/jdbc/cppconn/exception.h>
+#include <mysql-cppconn/jdbc/cppconn/resultset.h>
+#include <mysql-cppconn/jdbc/cppconn/statement.h>
 #include <string>
 #include <memory>
 #include <variant>

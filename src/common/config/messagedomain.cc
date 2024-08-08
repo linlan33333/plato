@@ -22,24 +22,44 @@ uint32_t MessageDomainConfig::GetServicePort()
     return Conf::GetConf()["message_domain"]["writer"]["service_port"].as<uint32_t>();
 }
 
-std::string MessageDomainConfig::GetDBHost()
+std::string MessageDomainConfig::GetMySQLHost()
 {
     return std::string();
 }
 
-std::string MessageDomainConfig::GetUser()
+std::string MessageDomainConfig::GetMySQLUser()
 {
     return std::string();
 }
 
-std::string MessageDomainConfig::GetPassword()
+std::string MessageDomainConfig::GetMySQLPassword()
 {
     return std::string();
 }
 
-std::string MessageDomainConfig::GetDataBase()
+std::string MessageDomainConfig::GetMySQLDataBase()
 {
     return std::string();
+}
+
+std::string MessageDomainConfig::GetTiDBAddr()
+{
+    return Conf::GetConf()["message_domain"]["writer"]["db"]["TiDB"]["addr"].as<std::string>();
+}
+
+uint32_t MessageDomainConfig::GetTiDBPort()
+{
+    return Conf::GetConf()["message_domain"]["writer"]["db"]["TiDB"]["port"].as<uint32_t>();
+}
+
+std::string MessageDomainConfig::GetTiDBUser()
+{
+    return Conf::GetConf()["message_domain"]["writer"]["db"]["TiDB"]["user"].as<std::string>();
+}
+
+std::string MessageDomainConfig::GetTiDBDataBase()
+{
+    return Conf::GetConf()["message_domain"]["writer"]["db"]["TiDB"]["database"].as<std::string>();
 }
 
 uint32_t MessageDomainConfig::GetProtocolDowngradeThreshold()

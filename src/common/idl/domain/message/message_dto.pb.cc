@@ -21,12 +21,13 @@ constexpr MessageDTO::MessageDTO(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : content_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , information_(nullptr)
-  , timestamp_(nullptr)
   , messageid_(uint64_t{0u})
-  , lastmessageid_(uint64_t{0u})
   , userid_(uint64_t{0u})
   , type_(0)
-{}
+
+  , commandtype_(0)
+
+  , timestamp_(uint64_t{0u}){}
 struct MessageDTODefaultTypeInternal {
   constexpr MessageDTODefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -38,7 +39,7 @@ struct MessageDTODefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MessageDTODefaultTypeInternal _MessageDTO_default_instance_;
 }  // namespace message
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_message_5fdto_2eproto[1];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_message_5fdto_2eproto[1];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_message_5fdto_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_message_5fdto_2eproto = nullptr;
 
 const uint32_t TableStruct_message_5fdto_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -49,12 +50,12 @@ const uint32_t TableStruct_message_5fdto_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::message::MessageDTO, messageid_),
-  PROTOBUF_FIELD_OFFSET(::message::MessageDTO, lastmessageid_),
   PROTOBUF_FIELD_OFFSET(::message::MessageDTO, userid_),
   PROTOBUF_FIELD_OFFSET(::message::MessageDTO, information_),
   PROTOBUF_FIELD_OFFSET(::message::MessageDTO, type_),
   PROTOBUF_FIELD_OFFSET(::message::MessageDTO, content_),
   PROTOBUF_FIELD_OFFSET(::message::MessageDTO, timestamp_),
+  PROTOBUF_FIELD_OFFSET(::message::MessageDTO, commandtype_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::message::MessageDTO)},
@@ -66,23 +67,23 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_message_5fdto_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021message_dto.proto\022\007message\032\016user_dto.p"
-  "roto\032\037google/protobuf/timestamp.proto\"\325\001"
-  "\n\nMessageDTO\022\021\n\tmessageID\030\001 \001(\004\022\025\n\rlastM"
-  "essageID\030\002 \001(\004\022\016\n\006userID\030\003 \001(\004\022)\n\013inform"
-  "ation\030\004 \001(\0132\024.user.InformationDTO\022\"\n\004typ"
-  "e\030\005 \001(\0162\024.message.MessageType\022\017\n\007content"
-  "\030\006 \001(\t\022-\n\ttimestamp\030\007 \001(\0132\032.google.proto"
-  "buf.Timestamp*2\n\013MessageType\022\010\n\004TEXT\020\000\022\t"
-  "\n\005EMOJI\020\001\022\016\n\nMULTIMEDIA\020\002P\001b\006proto3"
+  "roto\"\315\001\n\nMessageDTO\022\021\n\tmessageID\030\001 \001(\004\022\016"
+  "\n\006userID\030\002 \001(\004\022)\n\013information\030\003 \001(\0132\024.us"
+  "er.InformationDTO\022\"\n\004type\030\004 \001(\0162\024.messag"
+  "e.MessageType\022\017\n\007content\030\005 \001(\t\022\021\n\ttimest"
+  "amp\030\006 \001(\004\022)\n\013commandType\030\007 \001(\0162\024.message"
+  ".CommandType*2\n\013MessageType\022\010\n\004TEXT\020\000\022\t\n"
+  "\005EMOJI\020\001\022\016\n\nMULTIMEDIA\020\002*O\n\013CommandType\022"
+  "\010\n\004NONE\020\000\022\n\n\006RECALL\020\001\022\025\n\021PROTOCOLDOWNGRA"
+  "DE\020\002\022\023\n\017PROTOCOLUPGRADE\020\003b\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_message_5fdto_2eproto_deps[2] = {
-  &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_message_5fdto_2eproto_deps[1] = {
   &::descriptor_table_user_5fdto_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_message_5fdto_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_message_5fdto_2eproto = {
-  false, false, 355, descriptor_table_protodef_message_5fdto_2eproto, "message_dto.proto", 
-  &descriptor_table_message_5fdto_2eproto_once, descriptor_table_message_5fdto_2eproto_deps, 2, 1,
+  false, false, 393, descriptor_table_protodef_message_5fdto_2eproto, "message_dto.proto", 
+  &descriptor_table_message_5fdto_2eproto_once, descriptor_table_message_5fdto_2eproto_deps, 1, 1,
   schemas, file_default_instances, TableStruct_message_5fdto_2eproto::offsets,
   file_level_metadata_message_5fdto_2eproto, file_level_enum_descriptors_message_5fdto_2eproto, file_level_service_descriptors_message_5fdto_2eproto,
 };
@@ -108,34 +109,39 @@ bool MessageType_IsValid(int value) {
   }
 }
 
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CommandType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_message_5fdto_2eproto);
+  return file_level_enum_descriptors_message_5fdto_2eproto[1];
+}
+bool CommandType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
 class MessageDTO::_Internal {
  public:
   static const ::user::InformationDTO& information(const MessageDTO* msg);
-  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp(const MessageDTO* msg);
 };
 
 const ::user::InformationDTO&
 MessageDTO::_Internal::information(const MessageDTO* msg) {
   return *msg->information_;
 }
-const ::PROTOBUF_NAMESPACE_ID::Timestamp&
-MessageDTO::_Internal::timestamp(const MessageDTO* msg) {
-  return *msg->timestamp_;
-}
 void MessageDTO::clear_information() {
   if (GetArenaForAllocation() == nullptr && information_ != nullptr) {
     delete information_;
   }
   information_ = nullptr;
-}
-void MessageDTO::clear_timestamp() {
-  if (GetArenaForAllocation() == nullptr && timestamp_ != nullptr) {
-    delete timestamp_;
-  }
-  timestamp_ = nullptr;
 }
 MessageDTO::MessageDTO(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -162,14 +168,9 @@ MessageDTO::MessageDTO(const MessageDTO& from)
   } else {
     information_ = nullptr;
   }
-  if (from._internal_has_timestamp()) {
-    timestamp_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.timestamp_);
-  } else {
-    timestamp_ = nullptr;
-  }
   ::memcpy(&messageid_, &from.messageid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&messageid_)) + sizeof(type_));
+    static_cast<size_t>(reinterpret_cast<char*>(&timestamp_) -
+    reinterpret_cast<char*>(&messageid_)) + sizeof(timestamp_));
   // @@protoc_insertion_point(copy_constructor:message.MessageDTO)
 }
 
@@ -180,8 +181,8 @@ content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&information_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&information_)) + sizeof(type_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&timestamp_) -
+    reinterpret_cast<char*>(&information_)) + sizeof(timestamp_));
 }
 
 MessageDTO::~MessageDTO() {
@@ -195,7 +196,6 @@ inline void MessageDTO::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   content_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete information_;
-  if (this != internal_default_instance()) delete timestamp_;
 }
 
 void MessageDTO::ArenaDtor(void* object) {
@@ -219,13 +219,9 @@ void MessageDTO::Clear() {
     delete information_;
   }
   information_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && timestamp_ != nullptr) {
-    delete timestamp_;
-  }
-  timestamp_ = nullptr;
   ::memset(&messageid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&messageid_)) + sizeof(type_));
+      reinterpret_cast<char*>(&timestamp_) -
+      reinterpret_cast<char*>(&messageid_)) + sizeof(timestamp_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -243,42 +239,34 @@ const char* MessageDTO::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
         } else
           goto handle_unusual;
         continue;
-      // uint64 lastMessageID = 2;
+      // uint64 userID = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          lastmessageid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint64 userID = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           userid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .user.InformationDTO information = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // .user.InformationDTO information = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_information(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .message.MessageType type = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+      // .message.MessageType type = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_type(static_cast<::message::MessageType>(val));
         } else
           goto handle_unusual;
         continue;
-      // string content = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+      // string content = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_content();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "message.MessageDTO.content"));
@@ -286,11 +274,20 @@ const char* MessageDTO::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
         } else
           goto handle_unusual;
         continue;
-      // .google.protobuf.Timestamp timestamp = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
-          ptr = ctx->ParseMessage(_internal_mutable_timestamp(), ptr);
+      // uint64 timestamp = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .message.CommandType commandType = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_commandtype(static_cast<::message::CommandType>(val));
         } else
           goto handle_unusual;
         continue;
@@ -329,49 +326,48 @@ uint8_t* MessageDTO::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_messageid(), target);
   }
 
-  // uint64 lastMessageID = 2;
-  if (this->_internal_lastmessageid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_lastmessageid(), target);
-  }
-
-  // uint64 userID = 3;
+  // uint64 userID = 2;
   if (this->_internal_userid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_userid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_userid(), target);
   }
 
-  // .user.InformationDTO information = 4;
+  // .user.InformationDTO information = 3;
   if (this->_internal_has_information()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        4, _Internal::information(this), target, stream);
+        3, _Internal::information(this), target, stream);
   }
 
-  // .message.MessageType type = 5;
+  // .message.MessageType type = 4;
   if (this->_internal_type() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      5, this->_internal_type(), target);
+      4, this->_internal_type(), target);
   }
 
-  // string content = 6;
+  // string content = 5;
   if (!this->_internal_content().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_content().data(), static_cast<int>(this->_internal_content().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "message.MessageDTO.content");
     target = stream->WriteStringMaybeAliased(
-        6, this->_internal_content(), target);
+        5, this->_internal_content(), target);
   }
 
-  // .google.protobuf.Timestamp timestamp = 7;
-  if (this->_internal_has_timestamp()) {
+  // uint64 timestamp = 6;
+  if (this->_internal_timestamp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        7, _Internal::timestamp(this), target, stream);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(6, this->_internal_timestamp(), target);
+  }
+
+  // .message.CommandType commandType = 7;
+  if (this->_internal_commandtype() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      7, this->_internal_commandtype(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -390,25 +386,18 @@ size_t MessageDTO::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string content = 6;
+  // string content = 5;
   if (!this->_internal_content().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_content());
   }
 
-  // .user.InformationDTO information = 4;
+  // .user.InformationDTO information = 3;
   if (this->_internal_has_information()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *information_);
-  }
-
-  // .google.protobuf.Timestamp timestamp = 7;
-  if (this->_internal_has_timestamp()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *timestamp_);
   }
 
   // uint64 messageID = 1;
@@ -416,20 +405,26 @@ size_t MessageDTO::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64SizePlusOne(this->_internal_messageid());
   }
 
-  // uint64 lastMessageID = 2;
-  if (this->_internal_lastmessageid() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64SizePlusOne(this->_internal_lastmessageid());
-  }
-
-  // uint64 userID = 3;
+  // uint64 userID = 2;
   if (this->_internal_userid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64SizePlusOne(this->_internal_userid());
   }
 
-  // .message.MessageType type = 5;
+  // .message.MessageType type = 4;
   if (this->_internal_type() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
+  }
+
+  // .message.CommandType commandType = 7;
+  if (this->_internal_commandtype() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_commandtype());
+  }
+
+  // uint64 timestamp = 6;
+  if (this->_internal_timestamp() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64SizePlusOne(this->_internal_timestamp());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -460,20 +455,20 @@ void MessageDTO::MergeFrom(const MessageDTO& from) {
   if (from._internal_has_information()) {
     _internal_mutable_information()->::user::InformationDTO::MergeFrom(from._internal_information());
   }
-  if (from._internal_has_timestamp()) {
-    _internal_mutable_timestamp()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_timestamp());
-  }
   if (from._internal_messageid() != 0) {
     _internal_set_messageid(from._internal_messageid());
-  }
-  if (from._internal_lastmessageid() != 0) {
-    _internal_set_lastmessageid(from._internal_lastmessageid());
   }
   if (from._internal_userid() != 0) {
     _internal_set_userid(from._internal_userid());
   }
   if (from._internal_type() != 0) {
     _internal_set_type(from._internal_type());
+  }
+  if (from._internal_commandtype() != 0) {
+    _internal_set_commandtype(from._internal_commandtype());
+  }
+  if (from._internal_timestamp() != 0) {
+    _internal_set_timestamp(from._internal_timestamp());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -500,8 +495,8 @@ void MessageDTO::InternalSwap(MessageDTO* other) {
       &other->content_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(MessageDTO, type_)
-      + sizeof(MessageDTO::type_)
+      PROTOBUF_FIELD_OFFSET(MessageDTO, timestamp_)
+      + sizeof(MessageDTO::timestamp_)
       - PROTOBUF_FIELD_OFFSET(MessageDTO, information_)>(
           reinterpret_cast<char*>(&information_),
           reinterpret_cast<char*>(&other->information_));

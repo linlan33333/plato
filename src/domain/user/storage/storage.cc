@@ -5,7 +5,6 @@
 #include "user/workpool.h"
 #include <spdlog/spdlog.h>
 #include <algorithm>
-#include "storage.h"
 
 Storage &Storage::Get()
 {

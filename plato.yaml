@@ -66,3 +66,14 @@ message_domain:
     service_port: 8904
     protocol_downgrade_threshold: 1000
     super_session_push_interval: 800
+    db:
+      TiDB:
+        addr: "127.0.0.1"
+        port: 4000
+        user: "root"
+        database: "message"
+router:
+  service_name: "plato.access.router"
+  service_addr: "127.0.0.1"
+  service_port: 8905
+  workpool_thread_num: 32

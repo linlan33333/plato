@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package Router;
+
+service Router {
+    // 接入层调用
+    rpc AddRecord(AddRecordRequest) returns (AddRecordResponse);
+    rpc DelRecord(DelRecordRequest) returns (DelRecordResponse);
+    // 供未来的state server改造成push server后调用
+    rpc QueryRecord(QueryRecordRequest) returns (QueryRecordResponse);
+    // 让领域层的服务如writer server推送消息
+    rpc PushMessage(PushMessageRequest) returns (PushMessageResponse);
+    rpc FanoutMessage(FanoutMessageRequest) returns (FanoutMessageResponse);
+}
+
+message AddRecordRequest {
+    uint64 userID = 1;
+    uint64 deviceID = 2;
+    string endpoint = 3;
+    uint64 connID = 4;
+    bytes data = 5;
+}
+
+message AddRecordResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message DelRecordRequest {
+    uint64 userID = 1;
+    uint64 deviceID = 2;
+    string endpoint = 3;
+    uint64 connID = 4;
+}
+
+message DelRecordResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message QueryRecordRequest {
+    uint64 userID = 1;
+}
+
+message QueryRecordResponse {
+    int32 code = 1;
+    string msg = 2;
+    UserConnectionRecord data = 3;
+}
+
+message UserConnectionRecord {
+    uint64 userID = 1;
+    map<uint64, string> records = 2; 
+}
+
+message PushMessageRequest {
+    uint64 userID = 1;
+    bytes data = 2;
+}
+
+message PushMessageResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message FanoutMessageRequest {
+    bytes data = 1;
+}
+
+message FanoutMessageResponse {
+    int32 code = 1;
+    string msg = 2;
+}

@@ -33,7 +33,6 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "user_dto.pb.h"
-#include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_message_5fdto_2eproto
@@ -91,6 +90,33 @@ inline bool MessageType_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, MessageType* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageType>(
     MessageType_descriptor(), name, value);
+}
+enum CommandType : int {
+  NONE = 0,
+  RECALL = 1,
+  PROTOCOLDOWNGRADE = 2,
+  PROTOCOLUPGRADE = 3,
+  CommandType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  CommandType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool CommandType_IsValid(int value);
+constexpr CommandType CommandType_MIN = NONE;
+constexpr CommandType CommandType_MAX = PROTOCOLUPGRADE;
+constexpr int CommandType_ARRAYSIZE = CommandType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CommandType_descriptor();
+template<typename T>
+inline const std::string& CommandType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, CommandType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function CommandType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    CommandType_descriptor(), enum_t_value);
+}
+inline bool CommandType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, CommandType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<CommandType>(
+    CommandType_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -216,15 +242,15 @@ class MessageDTO final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kContentFieldNumber = 6,
-    kInformationFieldNumber = 4,
-    kTimestampFieldNumber = 7,
+    kContentFieldNumber = 5,
+    kInformationFieldNumber = 3,
     kMessageIDFieldNumber = 1,
-    kLastMessageIDFieldNumber = 2,
-    kUserIDFieldNumber = 3,
-    kTypeFieldNumber = 5,
+    kUserIDFieldNumber = 2,
+    kTypeFieldNumber = 4,
+    kCommandTypeFieldNumber = 7,
+    kTimestampFieldNumber = 6,
   };
-  // string content = 6;
+  // string content = 5;
   void clear_content();
   const std::string& content() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -238,7 +264,7 @@ class MessageDTO final :
   std::string* _internal_mutable_content();
   public:
 
-  // .user.InformationDTO information = 4;
+  // .user.InformationDTO information = 3;
   bool has_information() const;
   private:
   bool _internal_has_information() const;
@@ -256,24 +282,6 @@ class MessageDTO final :
       ::user::InformationDTO* information);
   ::user::InformationDTO* unsafe_arena_release_information();
 
-  // .google.protobuf.Timestamp timestamp = 7;
-  bool has_timestamp() const;
-  private:
-  bool _internal_has_timestamp() const;
-  public:
-  void clear_timestamp();
-  const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp() const;
-  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_timestamp();
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_timestamp();
-  void set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_timestamp() const;
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_timestamp();
-  public:
-  void unsafe_arena_set_allocated_timestamp(
-      ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_timestamp();
-
   // uint64 messageID = 1;
   void clear_messageid();
   uint64_t messageid() const;
@@ -283,16 +291,7 @@ class MessageDTO final :
   void _internal_set_messageid(uint64_t value);
   public:
 
-  // uint64 lastMessageID = 2;
-  void clear_lastmessageid();
-  uint64_t lastmessageid() const;
-  void set_lastmessageid(uint64_t value);
-  private:
-  uint64_t _internal_lastmessageid() const;
-  void _internal_set_lastmessageid(uint64_t value);
-  public:
-
-  // uint64 userID = 3;
+  // uint64 userID = 2;
   void clear_userid();
   uint64_t userid() const;
   void set_userid(uint64_t value);
@@ -301,13 +300,31 @@ class MessageDTO final :
   void _internal_set_userid(uint64_t value);
   public:
 
-  // .message.MessageType type = 5;
+  // .message.MessageType type = 4;
   void clear_type();
   ::message::MessageType type() const;
   void set_type(::message::MessageType value);
   private:
   ::message::MessageType _internal_type() const;
   void _internal_set_type(::message::MessageType value);
+  public:
+
+  // .message.CommandType commandType = 7;
+  void clear_commandtype();
+  ::message::CommandType commandtype() const;
+  void set_commandtype(::message::CommandType value);
+  private:
+  ::message::CommandType _internal_commandtype() const;
+  void _internal_set_commandtype(::message::CommandType value);
+  public:
+
+  // uint64 timestamp = 6;
+  void clear_timestamp();
+  uint64_t timestamp() const;
+  void set_timestamp(uint64_t value);
+  private:
+  uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(uint64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:message.MessageDTO)
@@ -319,11 +336,11 @@ class MessageDTO final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_;
   ::user::InformationDTO* information_;
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp_;
   uint64_t messageid_;
-  uint64_t lastmessageid_;
   uint64_t userid_;
   int type_;
+  int commandtype_;
+  uint64_t timestamp_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_message_5fdto_2eproto;
 };
@@ -358,27 +375,7 @@ inline void MessageDTO::set_messageid(uint64_t value) {
   // @@protoc_insertion_point(field_set:message.MessageDTO.messageID)
 }
 
-// uint64 lastMessageID = 2;
-inline void MessageDTO::clear_lastmessageid() {
-  lastmessageid_ = uint64_t{0u};
-}
-inline uint64_t MessageDTO::_internal_lastmessageid() const {
-  return lastmessageid_;
-}
-inline uint64_t MessageDTO::lastmessageid() const {
-  // @@protoc_insertion_point(field_get:message.MessageDTO.lastMessageID)
-  return _internal_lastmessageid();
-}
-inline void MessageDTO::_internal_set_lastmessageid(uint64_t value) {
-  
-  lastmessageid_ = value;
-}
-inline void MessageDTO::set_lastmessageid(uint64_t value) {
-  _internal_set_lastmessageid(value);
-  // @@protoc_insertion_point(field_set:message.MessageDTO.lastMessageID)
-}
-
-// uint64 userID = 3;
+// uint64 userID = 2;
 inline void MessageDTO::clear_userid() {
   userid_ = uint64_t{0u};
 }
@@ -398,7 +395,7 @@ inline void MessageDTO::set_userid(uint64_t value) {
   // @@protoc_insertion_point(field_set:message.MessageDTO.userID)
 }
 
-// .user.InformationDTO information = 4;
+// .user.InformationDTO information = 3;
 inline bool MessageDTO::_internal_has_information() const {
   return this != internal_default_instance() && information_ != nullptr;
 }
@@ -484,7 +481,7 @@ inline void MessageDTO::set_allocated_information(::user::InformationDTO* inform
   // @@protoc_insertion_point(field_set_allocated:message.MessageDTO.information)
 }
 
-// .message.MessageType type = 5;
+// .message.MessageType type = 4;
 inline void MessageDTO::clear_type() {
   type_ = 0;
 }
@@ -504,7 +501,7 @@ inline void MessageDTO::set_type(::message::MessageType value) {
   // @@protoc_insertion_point(field_set:message.MessageDTO.type)
 }
 
-// string content = 6;
+// string content = 5;
 inline void MessageDTO::clear_content() {
   content_.ClearToEmpty();
 }
@@ -555,90 +552,44 @@ inline void MessageDTO::set_allocated_content(std::string* content) {
   // @@protoc_insertion_point(field_set_allocated:message.MessageDTO.content)
 }
 
-// .google.protobuf.Timestamp timestamp = 7;
-inline bool MessageDTO::_internal_has_timestamp() const {
-  return this != internal_default_instance() && timestamp_ != nullptr;
+// uint64 timestamp = 6;
+inline void MessageDTO::clear_timestamp() {
+  timestamp_ = uint64_t{0u};
 }
-inline bool MessageDTO::has_timestamp() const {
-  return _internal_has_timestamp();
+inline uint64_t MessageDTO::_internal_timestamp() const {
+  return timestamp_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& MessageDTO::_internal_timestamp() const {
-  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = timestamp_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
-      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& MessageDTO::timestamp() const {
+inline uint64_t MessageDTO::timestamp() const {
   // @@protoc_insertion_point(field_get:message.MessageDTO.timestamp)
   return _internal_timestamp();
 }
-inline void MessageDTO::unsafe_arena_set_allocated_timestamp(
-    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timestamp_);
-  }
-  timestamp_ = timestamp;
-  if (timestamp) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:message.MessageDTO.timestamp)
-}
-inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MessageDTO::release_timestamp() {
+inline void MessageDTO::_internal_set_timestamp(uint64_t value) {
   
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = timestamp_;
-  timestamp_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
+  timestamp_ = value;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MessageDTO::unsafe_arena_release_timestamp() {
-  // @@protoc_insertion_point(field_release:message.MessageDTO.timestamp)
+inline void MessageDTO::set_timestamp(uint64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:message.MessageDTO.timestamp)
+}
+
+// .message.CommandType commandType = 7;
+inline void MessageDTO::clear_commandtype() {
+  commandtype_ = 0;
+}
+inline ::message::CommandType MessageDTO::_internal_commandtype() const {
+  return static_cast< ::message::CommandType >(commandtype_);
+}
+inline ::message::CommandType MessageDTO::commandtype() const {
+  // @@protoc_insertion_point(field_get:message.MessageDTO.commandType)
+  return _internal_commandtype();
+}
+inline void MessageDTO::_internal_set_commandtype(::message::CommandType value) {
   
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = timestamp_;
-  timestamp_ = nullptr;
-  return temp;
+  commandtype_ = value;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MessageDTO::_internal_mutable_timestamp() {
-  
-  if (timestamp_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
-    timestamp_ = p;
-  }
-  return timestamp_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MessageDTO::mutable_timestamp() {
-  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_timestamp();
-  // @@protoc_insertion_point(field_mutable:message.MessageDTO.timestamp)
-  return _msg;
-}
-inline void MessageDTO::set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(timestamp_);
-  }
-  if (timestamp) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timestamp));
-    if (message_arena != submessage_arena) {
-      timestamp = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, timestamp, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  timestamp_ = timestamp;
-  // @@protoc_insertion_point(field_set_allocated:message.MessageDTO.timestamp)
+inline void MessageDTO::set_commandtype(::message::CommandType value) {
+  _internal_set_commandtype(value);
+  // @@protoc_insertion_point(field_set:message.MessageDTO.commandType)
 }
 
 #ifdef __GNUC__
@@ -655,6 +606,11 @@ template <> struct is_proto_enum< ::message::MessageType> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::message::MessageType>() {
   return ::message::MessageType_descriptor();
+}
+template <> struct is_proto_enum< ::message::CommandType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::message::CommandType>() {
+  return ::message::CommandType_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

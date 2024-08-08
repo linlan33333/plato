@@ -4,8 +4,7 @@
 #include <semaphore.h>
 #include <sstream>
 #include <iostream>
-
-#define ZNODE_PATH "/plato/ip_dispatcher"
+#include "zookeeperutil.h"
 
 // 全局的watcher观察期，用于在watcher回调线程中执行，当zkserver给zkclient发送通知时调用
 void global_watcher(zhandle_t* zh, int type, int state, const char* path, void* watcherCtx) {
@@ -16,16 +15,16 @@ void global_watcher(zhandle_t* zh, int type, int state, const char* path, void* 
         }
     }
 
+    Context* ctx = static_cast<Context*>(watcherCtx);
     // 回调的消息类型是某个节点的子节点发生变化的消息类型
-    if (type == ZOO_CHILD_EVENT && strcmp(path, ZNODE_PATH) == 0) {
-        Context* ctx = static_cast<Context*>(watcherCtx);
+    if (type == ZOO_CHILD_EVENT && strcmp(path, ctx->znode_path) == 0) {
         // 存储变化之前的子节点列表
         struct String_vector *previous_children = ctx->s_v_ptr;
         // 存储变化后的子节点列表
         struct String_vector current_children;
 
         // 获取当前子节点列表，并重新设置watcher
-        if (ZOK == zoo_wget_children(zh, ZNODE_PATH, global_watcher, ctx, &current_children)) {
+        if (ZOK == zoo_wget_children(zh, ctx->znode_path, global_watcher, ctx, &current_children)) {
             ZkClient* zkcli_ptr = ctx->zk_cli_ptr;
             std::cout << "子节点发生变化" << std::endl;
             // 这行代码出错了，后面再看
@@ -93,8 +92,19 @@ void ZkClient::Start()
     sem_wait(&sem);
 
     // 先获取一下目标路径下的节点有哪些,顺便重新注册一下监听器回调函数
-    zoo_wget_children(m_zhandle, ZNODE_PATH, global_watcher, watcher_ctx_, watcher_ctx_->s_v_ptr);
+    zoo_wget_children(m_zhandle, znode_path_.c_str(), global_watcher, watcher_ctx_, watcher_ctx_->s_v_ptr);
     std::cout << "zookeeper_init success!" << std::endl;
+}
+
+void ZkClient::SetMonitorNodePath(std::string &path)
+{
+    znode_path_ = path;
+    watcher_ctx_->znode_path = const_cast<char*>(znode_path_.c_str());
+}
+
+std::string& ZkClient::GetMonitorNodePath()
+{
+    return znode_path_;
 }
 
 // 创建znode节点
@@ -175,13 +185,13 @@ void ZkClient::check_and_trigger(zhandle_t *zh, String_vector *previous, String_
             spdlog::info("Node added: {}", current->data[i]);
             // 组装新增的节点的完整路径
             std::stringstream ss;
-            ss << ZNODE_PATH << current->data[i];
-            // 装着网关节点的数据
+            ss << znode_path_ << current->data[i];
+            // 装着新增节点的数据
             char node_data[1024];
             int buffer_len = sizeof(node_data);
             if (ZOK == zoo_get(zh, ss.str().c_str(), 0, node_data, &buffer_len, nullptr))
             {
-                // 把网关节点的数据传给该回调函数
+                // 把新增节点的数据传给该回调函数
                 child_node_num_add_callback_(zh, current->data[i], node_data);
             }
         }

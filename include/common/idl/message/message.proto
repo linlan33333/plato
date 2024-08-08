@@ -10,8 +10,8 @@ enum CmdType { //枚举消息类型
     UP = 4; // 上行消息
     Push = 5; // 下行 推送消息
     PushBatch = 6;	//  下行 推送超大群聊的批量信息，需要采用session绑定的方式
-    ProtocolUpgrade = 7;    // 超大群聊协议降级的消息
-    ProtocolDowngrade = 8;  // 超大群聊协议升级的消息
+    // ProtocolUpgrade = 7;    // 超大群聊协议降级的消息，理论上不需要这个东西
+    // ProtocolDowngrade = 8;  // 超大群聊协议升级的消息，理论上不需要这个东西
 }
 
 // 会话的类型，客户端发消息时就能知道该会话是不是超大群聊啥的，提前设置好相应信息

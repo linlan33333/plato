@@ -11,6 +11,8 @@ struct Context
     struct String_vector* s_v_ptr = nullptr;
 
     ZkClient* zk_cli_ptr = nullptr;
+
+    char* znode_path = nullptr;
 };
 
 // 封装的zk客户端
@@ -22,6 +24,14 @@ public:
 
     // zkclient启动连接zkserver
     void Start();
+
+    /// @brief 设置要监视的节点路径
+    /// @param path 
+    void SetMonitorNodePath(std::string& path);
+    /// @brief 获取要监视的节点路径
+    /// @return 
+    std::string& GetMonitorNodePath();
+
     // 再zkserver上根据指定的path创建znode节点
     /**
      * path表示znode节点路径，data表示节点的值
@@ -53,6 +63,10 @@ private:
 
     /// @brief 全局监控器函数中的上下文信息对象
     Context* watcher_ctx_;
+
+    /// @brief 要监视的节点路径，但是弊端就是只能监视一个路径，想想办法该怎么修改能支持监视多个路径
+    /// 或者后续直接换成etcd算了
+    std::string znode_path_;
 
     /// @brief 某个节点的子节点数量增加时的回调函数，会传入该节点的数据
     std::function<void(zhandle_t*, const char*, const char*)> child_node_num_add_callback_;

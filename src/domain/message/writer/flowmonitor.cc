@@ -1,7 +1,9 @@
 #include "domain/message/writer/flowmonitor.h"
 #include "common/config/messagedomain.h"
 #include "flowmonitor.h"
+#include "messagesender.h"
 #include "common/idl/message/message.pb.h"
+#include "common/idl/domain/message/message_dto.pb.h"
 #include "timer.h"
 #include <spdlog/spdlog.h>
 
@@ -68,7 +70,16 @@ void FlowMonitor::ProtocolDowngrade()
     protocol_state_ = ProtocolState::PULL;
 
     // 调用MessageSender发送协议回退的特殊消息
-    // 。。。。
+    // 这里需要先组装一个协议回退的消息，然后发出去
+    message::MessageDTO message_dto;
+    message_dto.set_commandtype(message::CommandType::PROTOCOLDOWNGRADE);
+    std::string message_str;
+    if (!message_dto.SerializeToString(&message_str)) 
+    {
+        spdlog::warn("FlowMonitor.cc::ProtocolDowngrade: MessageDTO serialize to string error!");
+        return;
+    }
+    MessageSender::Get().FanoutMessage(message::PushBatch, message_str);
 }
 
 void FlowMonitor::SetSendMessageTask()
@@ -87,8 +98,16 @@ void FlowMonitor::SetSendMessageTask()
         {
             protocol_state_ == ProtocolState::PUSH;
 
-            // TODO: 调用MessageSender发送协议升级的特殊消息
-            // 。。。。。。
+            // 调用MessageSender发送协议升级的特殊消息
+            message::MessageDTO message_dto;
+            message_dto.set_commandtype(message::CommandType::PROTOCOLUPGRADE);
+            std::string message_str;
+            if (!message_dto.SerializeToString(&message_str)) 
+            {
+                spdlog::warn("FlowMonitor.cc::SetSendMessageTask: MessageDTO serialize to string error!");
+                return;
+            }
+            MessageSender::Get().FanoutMessage(message::PushBatch, message_str);
 
             // 需要立即发送这批消息数据
             SendContainerMessage();
@@ -132,11 +151,7 @@ void FlowMonitor::SendContainerMessage()
         // 这批消息序列化失败的话可以不要了，以后让客户端主动拉取消息
         return;
     }
-    
-    message::MsgCmd msg_cmd;
-    msg_cmd.set_type(message::CmdType::PushBatch);
-    msg_cmd.set_payload(session_msg_str);
 
     // 调用MessageSender组件的发送消息函数，直接传入MsgCmd对象即可
-    // 。。。。。。
+    MessageSender::Get().FanoutMessage(message::PushBatch, session_msg_str);
 }

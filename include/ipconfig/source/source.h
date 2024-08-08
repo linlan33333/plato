@@ -1,6 +1,6 @@
 #pragma once
 
-#include "discovery/zookeeperutil.h"
+#include "common/discovery/zookeeperutil.h"
 #include "domain/dispatcher.h"
 
 class Source

@@ -2,7 +2,6 @@ syntax = "proto3";
 
 import "user_dto.proto";
 // import "include/common/idl/domain/user/user_dto.proto";
-import public "google/protobuf/timestamp.proto";
 
 // 与接入层的message撞了
 package message;
@@ -25,7 +24,9 @@ message MessageDTO {
     // 该条消息具体内容
     string content = 5;
 	// 发送时间戳，该字段由IM server设置好
-    google.protobuf.Timestamp timestamp = 6;
+    uint64 timestamp = 6;
+
+    CommandType commandType = 7;
 }
 
 // 消息类型，这是文本消息还是颜文字还是多媒体，甚至直播场景中的礼物、打赏消息等类型
@@ -35,4 +36,15 @@ enum MessageType {
     TEXT = 0;
     EMOJI = 1;
     MULTIMEDIA = 2;
+}
+
+enum CommandType {
+    // 默认值，表示没有命令
+    NONE = 0;
+    // 撤回消息
+    RECALL = 1;
+    // 超大群聊协议回退消息
+    PROTOCOLDOWNGRADE = 2;
+    // 超大群聊协议升级消息
+    PROTOCOLUPGRADE = 3;
 }

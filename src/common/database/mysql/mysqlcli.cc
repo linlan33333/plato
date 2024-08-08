@@ -1,7 +1,7 @@
 #include "database/mysql/mysqlcli.h"
 #include "config/userdomain.h"
 #include "spdlog/spdlog.h"
-#include <cppconn/prepared_statement.h>
+#include <mysql-cppconn/jdbc/cppconn/prepared_statement.h>
 #include "mysqlcli.h"
 
 MySQLCli::MySQLCli()

@@ -21,18 +21,31 @@ public:
     /// @return 
     uint32_t GetServicePort();
 
-    /// @brief 获取数据库的host信息
+    /// @brief 获取MySQL数据库的host信息
     /// @return 
-    std::string GetDBHost();
-    /// @brief 获取数据库的用户名
+    std::string GetMySQLHost();
+    /// @brief 获取MySQL数据库的用户名
     /// @return 
-    std::string GetUser();
-    /// @brief 获取数据库的密码
+    std::string GetMySQLUser();
+    /// @brief 获取MySQL数据库的密码
     /// @return 
-    std::string GetPassword();
-    /// @brief 获取数据库的具体数据库名
+    std::string GetMySQLPassword();
+    /// @brief 获取MySQL数据库的具体数据库名
     /// @return 
-    std::string GetDataBase();
+    std::string GetMySQLDataBase();
+
+    /// @brief 获取TiDB数据库的IP地址
+    /// @return 
+    std::string GetTiDBAddr();
+    /// @brief 获取TiDB数据库的端口号
+    /// @return 
+    uint32_t GetTiDBPort();
+    /// @brief 获取TiDB数据库的用户名
+    /// @return 
+    std::string GetTiDBUser();
+    /// @brief 获取TiDB数据库的具体数据库名
+    /// @return 
+    std::string GetTiDBDataBase();
 
     /// @brief 获取writer server的协议降级阈值
     /// @return 

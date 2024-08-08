@@ -1,5 +1,7 @@
 #include "domain/message/writer/rpc/service/impl.h"
 #include "common/grpc/domain/code.h"
+#include "storage/dao/message.h"
+#include "domain/message/writer/storage/storage.h"
 #include "flowcontroller.h"
 #include <spdlog/spdlog.h>
 
@@ -28,19 +30,30 @@ grpc::Status MessageWriterRpcServiceImpl::PushMessage(grpc::ServerContext *conte
 
     // TODO: 存储层存储消息，理论上要按照消息的因果一致和最终一致性存到不同类型的数据库中
     // 但目前只实现因果一致性的聊天APP，所以这里不做区分了，直接往数据库里存
-    // 。。。。。。。。。。。。。
+    // 如果存储消息失败，那么说明消息肯定会丢失，就必须返回错误，让客户端重新发送消息
+    if (!Storage::Get().InsertMessage(session_id, message))
+    {
+        spdlog::error("MessageWriterRpcServiceImpl.cc::PushMessage: Insert message to storage error! Message will lost!");
+
+        response->set_code(Domain::Code::UPLOADMESSAGEERROR);
+        response->set_msg("Insert message to storage error! Message will lost!");
+        return grpc::Status::OK;
+    }
 
     // 消息推送，由于消息已经存储到数据库中，可以确保数据不丢失了，那么异步推送消息即可，不需要等待消息推送成功再返回
     // 对于超大群聊，走流控组件，即临时保存住该超大群聊的消息一段时间，根据数据量判断是否需要做协议升降级
     if (type == message::SessionType::SUPER) 
     {
         FlowController::Get().AddMessageAndCheckFlow(session_id, message_id, message_str);
+        response->set_code(Domain::Code::SUCCESS);
+        return grpc::Status::OK;
     }
 
     // TODO: 对于普通消息，直接让MessageSender推送消息即可
     message::MsgCmd msg_cmd;
     msg_cmd.set_type(message::CmdType::Push);
     msg_cmd.set_payload(message_str);
+    
     // 调用MessageSender发送消息
     // 。。。。。。。。。。
 

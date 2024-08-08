@@ -1,4 +1,5 @@
 #include "state/rpc/service/service.h"
+#include "common/discovery/zookeeperutil.h"
 #include "config/conf.h"
 #include "cache.h"
 #include "timer.h"
@@ -46,6 +47,9 @@ int main(int argc, char* argv[])
 
     // 启动远程状态机组件，也就是和redis集群建立连接，恢复状态
     CacheState::Get().Init();
+
+    // 向注册中心注册该state server，假设注册的方式是ip:port的形式
+    // 。。。。。。。
 
     StateRpcService service;
     service.Start();

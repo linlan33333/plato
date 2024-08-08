@@ -1,4 +1,4 @@
-#include "rpc/client/statecaller.h"
+#include "gateway/rpc/client/statecaller.h"
 #include "config/state.h"
 #include <spdlog/spdlog.h>
 #include <grpcpp/grpcpp.h>
@@ -34,5 +34,3 @@ void StateCaller::SendMsg(std::string endpoint, uint64_t connid, std::string dat
 
     stub_->SendMsg(&context, push_req, &resp);
 }
-
-

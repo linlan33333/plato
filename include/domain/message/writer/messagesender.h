@@ -15,10 +15,10 @@ public:
     void PushMessage(uint64_t session_id, message::CmdType cmd_type, std::string content);
 
     /// @brief 用于超大群聊消息扇出，底层直接调用router server，发送协议升降级消息也是调用这个接口发送
-    /// @param session_id 
+    /// 只不过协议升降级消息需要包装到MessageDTO送到用户手中
     /// @param cmd_type 
     /// @param content 
-    void FanoutMessage(uint64_t session_id, message::CmdType cmd_type, std::string content);
+    void FanoutMessage(message::CmdType cmd_type, std::string content);
 
 private:
     MessageSender() = default;

@@ -7,7 +7,7 @@
 namespace cache
 {
     // 某个连接的最大消息id，和该连接存储在同一个Redis cluster slot中，后一个占位符是connid，来标识
-    // 这是哪一个connid对应的最大消息id
+    // 这是哪一个connid对应的最大消息id，后续会被弃用
     const std::string MaxClientIDKey = "max_client_id_{%d}_%llu";
 
     // 某个连接connid对应的最后的消息，会被业务服务器存储在redis中（直接存PushMsg的序列化数据），如果该消息没有超时，
@@ -16,7 +16,8 @@ namespace cache
     // connid，这样就唯一标识了该消息是属于哪个连接的
     const std::string LastMsgKey = "last_msg_{%d}_%llu";
 
-    // 登录的槽，对应一个set集合
+    // 登录的槽，对应一个set集合，现在改成了根据userID来注册，value是该userID的所有deviceID，由于目前没有做多设备，
+    // 所以value暂时是endpoint + connid
     const std::string LoginSlotSetKey = "login_slot_set_{%d}";
 
     // 定义时间常量，redis中一些key的过期时间都设为一周，这么写是因为redis-plus-plus中的接口设置超时时间是std::chrono::seconds类型
